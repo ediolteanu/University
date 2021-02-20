@@ -1,0 +1,4 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Facultate/CN2/lab0/lab00_skel/task03.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module task03
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Facultate/CN2/lab0/lab00_skel/task03_test.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module task03_test

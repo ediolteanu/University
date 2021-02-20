@@ -1,0 +1,6 @@
+verilog isim_temp "state_machine.v"
+verilog isim_temp "signal_generation_unit.v"
+verilog isim_temp "reg_file_interface_unit.v"
+verilog isim_temp "decode_unit.v"
+verilog isim_temp "control_unit.v"
+verilog isim_temp "C:/Xilinx/14.7/ISE_DS/ISE//verilog/src/glbl.v"

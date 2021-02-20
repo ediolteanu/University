@@ -1,0 +1,65 @@
+ISim log file
+Running: C:\Users\student\Documents\lab05_skel\unitTestCpu_isim_beh.exe -intstyle ise -gui -tclbatch isim.cmd -wdb C:/Users/student/Documents/lab05_skel/unitTestCpu_isim_beh.wdb 
+ISim P.20131013 (signature 0x7708f090)
+----------------------------------------------------------------------
+INFO:Security:61 - The XILINXD_LICENSE_FILE environment variable is not set.
+INFO:Security:63 - The LM_LICENSE_FILE environment variable is not set.
+INFO:Security:68 - For more information or for assistance in obtaining 
+ a license, please run the Xilinx License Configuration Manager
+       (xlcm or "Manage Xilinx Licenses".)
+INFO:Security:68a - user is student, on host WIN-I7C3F74FULA.
+ERROR:Security:14 - No feature was available for 'ISIM'.
+
+No such feature exists.
+Feature:       ISIM
+License path:  C:/.Xilinx\Xilinx.lic;C:\Xilinx\14.7\ISE_DS\ISE\/coregen/core_licenses\Xilinx.lic;C:\Xilinx\14.7\ISE_DS\ISE\/coregen/core_licenses\XilinxFree.lic;C:\Xilinx\14.7\ISE_DS\EDK/data/core_licenses\Xilinx.lic;
+FLEXnet Licensing error:-5,357
+For further information, refer to the FLEXnet Licensing documentation,
+available at "www.flexerasoftware.com".
+----------------------------------------------------------------------
+WARNING: A full ISim License cannot be checked out due to the issues listed above. Please use Xilinx License Configuration Manager to fix these issues in order to check out a full ISim license.
+WARNING: ISim will run in Lite mode. Please refer to the ISim documentation for more information on the differences between the Lite and the Full version.
+This is a Lite version of ISim.
+Time resolution is 1 ps
+# onerror resume
+# wave add /
+# run 2000 ns
+Simulator is doing circuit initialization process.
+Start cpu ...
+Legend:
+OPERATION OP1, OP2 - STAGE: OK <=> PASS
+OPERATION OP1, OP2 - STAGE: FAILED => EXPECTED_VALUE VS COMPUED_VALUE <=> FAIL
+Init regs..
+Finished circuit initialization process.
+
+PC =>    0
+LDI R16, 5 - ID: FAILED
+LDI Rx, 5 - WB: FAILED => (0) vs (5)
+
+PC =>    1
+RJMP LABEL - ID: FAILED => OPCODE_TYPE: (          26 ) vs (  29 ). Check defines.vh.
+
+PC =>    2
+LDI R17, 15 - ID: FAILED
+LDI R23, 15 - WB: FAILED => (20) vs (15)
+
+PC =>    3
+RET - ID: FAILED. RET instruction should be in GROUP_TWO_CYCLE_MEM
+RET - EX: OK
+RET - MEM: cycle_count 0, FAILED. signal CONTROL_STACK_PREINC should be active
+RET - MEM: FAILED: saved_pc =>           6 vs    20
+
+PC =>    4
+LDI R17, 10 - ID: FAILED
+LDI R20, 10 - WB: FAILED => (0) vs (10)
+
+PC =>    5
+RCALL FUNCTION - ID: FAILED opcode_type ->          27 vs  30
+RCALL FUNCTION - ID: FAILED saved_pc =>           6 vs    20
+RCALL FUNCTION - EX2: FAILED: next_program_counter =>           2 vs    6
+
+PC =>    6
+LDI R18, 20 - ID: FAILED
+LDI Rx, 20 - WB: FAILED => (0) vs (20)
+
+PC =>    1
