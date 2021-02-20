@@ -1,0 +1,106 @@
+Nume: Olteanu Eduard-Florin	
+Grupa: 336CAb
+
+Tema 1 LFA - Glypho
+
+Am implementat interpretorul pentru limbajul Glypho in java.
+
+In main primul lucru care are loc este citirea. Mai intai se citeste din 
+fisierul .gly, primul argument in linia de comanda, fiind apelara functia
+statica reader din clasa Interpreter. Aceasta functie citeste caracter cu
+caracter si creeaza instructiunea folosind un hashmap care este reinitializat
+la fiecare instructiune, adaugand caracterul alaturi de valoare corespunzatoare
+daca nu se afla in hashmap sau luand valoarea corespunzatoare caracterului daca
+acesta exista in hashmap. Instructiunea apoi este creata si salvata ca un numar
+decimal transformat din baza 3 (exceptand 0123 care este 18) - cum este propus
+in enunt. De asemenea este verificat daca numarul de caractere este divizibil
+cu 4 pentru a se putea crea si ultima instructiune. Toate instructiunile sunt
+salvate intr-un ArrayList.
+Dupa citirea si decodarea instructiunilor este verificat daca exista o baza,
+daca da, se citeste. Apoi are loc o parcurgere a instructiunilor fara a se
+executa pentru a verifica daca parantezele sunt corecte. Inainte de a incepe
+executia se verifica daca exista vreo eroare sintactica si daca da aceasta
+se afiseaza la err si programul returneaza -1.
+Daca nu exista erori sintactice incepe executia instructiunilor. Functia
+statica execute din Interpreter apeleaza metoda corespunzatoare din 
+Instructions in functie de numarul executiei.
+
+Pentru a rezolva problema numerelor reprezentate pe mai mult de 64 de biti am
+folosit BigInteger care poate reprezenta numere oricat de mari, in functie de
+memorie.
+
+Input: In functie de baza in care sunt reprezentate numerele se verifica daca
+este respectata baza, daca nu seteaza eroare de executie. Apoi este creat
+un BigInteger in baza corespunzatoare si este facuta conversia acestuia in baza
+10, la final fiind adaugat in stiva (stiva este reprezentata ca un Stack de 
+BigInteger).
+
+Rot: Verifica daca stiva este goala pentru a sti daca sa execute sau sa seteze
+eroare. Scoate primul element din stiva cu .pop() si il adauga la index-ul 0 
+care reprezinta baza stivei (ultimul element).
+
+Swap: Verifica daca exista cel putin 2 elemente pentru a executa sau a seta
+eroare corespunzatoare. Scoate ultimele 2 elemente adaugate in stiva si le
+pune inapoi in ordinea inversa. 
+
+Push: Pune elementul 1 pe stiva.
+
+Rrot: Verifica daca stiva este goala pentru a sti daca sa execute sau sa seteze
+eroare. Ia valoarea primului element adaugat in stiva si apoi il sterge de la
+baza si il pune inapoi pe stiva.
+
+Dup: Verifica daca exista cel putin un element in stiva pentru eroare,
+respectiv executie. Adauga pe stiva valoarea din varful stivei, astfel 
+duplicand-o.
+
+Add: Verifica daca exista cel putin 2 elemente in stiva pentru executie, daca 
+nu seteaza eroarea. Apoi le scoate din stiva, fiind de tipul BigInteger
+trebuie adunate cu BigInteger n1.add(n2).
+
+Pentru Lbrace si Rbrace am folosit o stiva respectiv o lista pentru a salva
+numarul in ordinea de executie a acestor instructiuni. Ultimul element 
+adaugat in stiva are corespondent primul element din lista 
+ex:  { { } } -> S: { { ; 	L: } }
+
+Lbrace: Verifica daca exista cel putin un element in stiva pentru executie,
+respectiv eroare. Daca valoarea din varful stivei este 0, verifica daca
+a fost descoperita perechea ei (daca exista un element in lista rbraces),
+daca da seteaza program counter-ul la numarul numarul instructiunii rbrace
+(apoi este incrementat de for si practic se iese din loop); daca nu a fost
+descoperita perechea ei creste ignore (Acesta este apoi scazut in metoda
+execute din Interpreter de fiecare daca cand este > 0 si cand se intalneste
+o instructiune rbrace) - astfel ignorandu-se tot codul dintre paranteze.
+Daca este o secventa de tipul i0, i1, { i2 { i3, i4 } i5 }... si trebuie
+ignorat codul complet (valoarea pe stiva este 0 de la inceput), in momentul
+in care se ajunge la i3 ignore va avea valoarea 2 si apoi scade la fiecare 
+paranteza inchisa. 
+Daca valoarea din varful stivei nu este 0, daca a fost gasita perechea ei
+o scoate din lista rbraces (practic asa stie ca s-a terminat un ciclu) si
+adauga program_counter in stiva rbraces pentru a incepe un nou ciclu.
+
+Output: Verifica daca exista cel putin un element in stiva pentru executie,
+respectiv eroare. Il scoate de pe stiva si il afiseaza convertind BigInteger
+la baza specificata/10 si aplica toUpperCase deoarece daca baza > 10 conversia
+foloseste literele LowerCase.
+
+Multiply: Verifica daca exista cel putin 2 elemenete in stiva pentru executie,
+respectiv eroare. Le scoate de pe stiva si adauga inapoi valoarea rezultata de
+metoda multiply() din BigInteger.
+
+Execute: Verifica daca exista cel putin 4 elemente in stiva pentru a crea o
+instructiune din ele, sau sa arunce eroare daca nu. Crearea instructiunii are
+loc in acelasi mod ca la citirea fisierului .gly. Daca este creata o
+instructiune lbrace/rbrace nu o executa si seteaza eroare de executie. Altfel
+executa instructiunea cu metoda execute din Interpreter.
+
+Negate: Verifica daca exista cel putin un element in stiva pentru executie,
+respectiv eroare. Scoate elementul din stiva si pune inapoi valorea returnata
+de BigInteger n.negate().
+
+Pop: Verifica daca exista cel putin un element in stiva pentru executie,
+respectiv eroare. Scoate elementul din stiva cu .pop().
+
+Rbrace: Adauga in lista indicele instructiunii pentru a crea o pereche cu
+ultima valoare adaugata in stiva lbraces. Apoi seteaza program_counter la
+aceasta valoare - 1 (for-ul incrementeaza apoi program_counter) si astfel
+revine la instructiunea lbrace pereche.
