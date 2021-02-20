@@ -1,0 +1,76 @@
+Name: Olteanu Eduard-Florin
+Group: 324CD
+
+Tema2 - IOCLA - Stenography
+
+Pentru rezolvarea primului task am implementat functia bruteforce_singlebyte_xor
+care parcurge fiecare byte din imagine, stocat din 4 in 4 adrese si aplica xor
+pe acesta cu chei de la 0 la 255. Dupa fiecare xor verific daca valoarea
+rezultata reprezinta codul ascii pentru 'r'; daca da, verific daca urmatorul
+byte contine valoarea pentru 'e' si tot asa pana gasesc cuvantul revient.
+Odata gasit cuvantul se sare la printare, unde in ebx este salvata linia si in
+edx este salvata cheia. Mai intai afisez mesajul de la linia salvata in ebx pana
+la null terminator si apoi afisez cheia si linia. De asemenea aceasta functie
+este apelata si pentru task-ul doi pentru a cauta mesajul, asa ca am creat un
+label si un jump care sare la el doar in cazul in care in variabila task este
+salvata valoarea 2, corespunzatoare taskului 2. In acest caz nu se mai face
+afisarea.
+
+Pentru rezolvarea task-ului 2 apelam mai intai functia bruteforce_singlebyte_xor
+pentru a gasi mesajul, cheia si linia si apoi apelam functia encrypt_message.
+In aceasta functie decryptam intreaga imagine cu cheia deja gasita. Mesajul
+este salvat in sectiunea .data. Astfel incepe sa scrie mesajul pe linia
+urmatoare liniei pe care se afla primul mesaj. Apoi este calculata cheia conform
+formulei din enunt. Nu este necesara apelariea functiei floor deoarece in urma 
+impartirii in registrul eax se afla deja catul. Dupa aceea imaginea este
+criptata folosing xor cu cheia noua si apoi printata cu ajutorul functiei
+print_image.
+
+Pentru rezolvarea task-ului 3 am implementat functia morse encrypt. De asemenea,
+inainte de apelarea funtiei sunt luati parametrii din linia de comanda si 
+scrisi in variabilele initializate in .bss. Apoi este parcurs mesajul caracter
+cu caracter. Pentru fiecare caracter de la A-Z, 0-9 si ',' este facut cate un
+label la care se sare atunci cand este identificat caracterul respectiv. 
+La fiecare label corespunzator enscriptiei este efectuata suprascrierea in 
+pe byte conform regulilor prezentate in enunt pentru fiecare caracter. Dupa
+scrierea unui caracter se verifica daca se urmatorul este null terminator,
+daca este se adauga acesta, daca nu se adauga spatiu si se trece la urmatoarea
+litera. La final se reface imaginea cu ajutorul functiei print_image.
+
+Pentru rezolvarea task-ului 4 am implementat functia lsb_encode. De asemenea,
+inainte de apelarea funtiei sunt luati parametrii din linia de comanda si scrisi
+in variabilele initializate in .bss. In functie se parcurge caracter cu caracter
+mesajul care trebuie codat si apoi luam fiecare bit din reprezentarea
+caracterlui pe 8 biti, folosing shfitari la stanga si la dreapta. Apoi,
+parcurgand imaginea de la index-ul dat in argumente, pentru fiecare byte golim
+LSB shiftandu-l odata la dreapta si la stanga si adaugam bit-ul actual din
+litera la care suntem cu pargurgerea. Daca ultimul caracter codat a fost
+null terminator, ne oprim si scriem imaginea, daca nu trecem la urmatorul 
+caracter.
+
+Pentru rezolvarea task-ului 5 am implementat functia lsb_decode. De asemenea,
+inainte de apelarea funtiei sunt luati parametrii din linia de comanda si scrisi
+in variabilele initializate in .bss. In functie parcurgem de la index-ul dat ca
+argument si decodam caracter cu caracter luand LSB de la fiecare byte dintr-un
+grup de 8 pentru a crea byte-ul initial. Facem asta adunand si shiftand
+registrul al. Dupa ce s-a creat un byte il afisam si trecem la urmatorul grup
+de 8 bytes din imagine. Daca ultimul byte reconstruit a fost null terminator nu
+mai afisam si functia se termina.
+
+Pentru rezolvarea task-ului 6 am implementat functia blur. In aceasta functie
+parcurgem imaginea ca pe o matrice cu indicii de la 0 la n-1 respectiv 0 la m-1.
+Deoarece blurarea se face fara marginile imaginii, noi o parcurgem de la 1 la
+n-2, respectiv de la 1 la m-2, unde n si m sunt inaltimea si latimea. Pentru 
+fiecare byte calculam media aritmetica conform formulei, adunand cele 5 valori
+in eax si apoi impartind la 5. Apoi punem valoarea pe stiva. Dupa ce am parcurs
+intreaga matrice pe stiva se vor afla toate mediile aritmetice calculate. 
+Pentru a le introduce corect in matrice, o parcurgem pe aceasta in sens opus,
+din coltul dreapta jos si dam pop la cate o valoare de pe stiva si o punem la
+indicele corespunzator. La final scriem imaginea cu ajutorul functiei
+print_image. Punem toate mediile pe stiva deoarece daca am actualiza matricea
+dupa fiecare valoare calculata aceasta le-ar influenta pe celelalte.
+
+
+
+
+

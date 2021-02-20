@@ -1,0 +1,13 @@
+#-----------------------------------------------------------
+# Vivado v2019.2.1 (64-bit)
+# SW Build 2729669 on Thu Dec  5 04:49:17 MST 2019
+# IP Build 2729494 on Thu Dec  5 07:38:25 MST 2019
+# Start of session at: Fri May  1 23:06:28 2020
+# Process ID: 12256
+# Current directory: E:/Facultate/CN/virg_mobila
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent16552 E:\Facultate\CN\virg_mobila\virg_mobila.xpr
+# Log file: E:/Facultate/CN/virg_mobila/vivado.log
+# Journal file: E:/Facultate/CN/virg_mobila\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project E:/Facultate/CN/virg_mobila/virg_mobila.xpr

@@ -1,0 +1,63 @@
+Nume: Olteanu Eduard-Florin
+Grupa: 324CD
+
+1. Analiza binarului
+
+	Pentru analiza binarului nice am folosit objdump, gdb si IDA.
+Ruland programul in gdb cu datele din nice_payload observam aparitia unui
+Segmentation fault. Pentru identificarea vulnerabilitatii am folosit comanda
+backtrace care ne arata ca eroarea apare in functia print_flag de la adresa
+0x080485b1. Apoi utilizand comanda nexti observam adresa exacta la care apare
+vulnerabilitatea - 0x0804867e, acolo unde este apelat "call eax". Utilizand
+un breakpoint la aceasta adresa si printand valoarea din eax observam ca 
+aceasta valoare, transformata din decimal in hexa este o adresa (0x0804ad78)
+ce se afla in afara adreselor alocate in cadrul programului, rezultand un 
+segmentation fault - vulnerabilitatea.
+
+2. Spargerea binarului
+	Pentru rezolvarea acestui task am folosit IDA, objump dar si un
+generator de payload scris in c. Am identificat toate apelurile de functie
+din main, iar pentru afisarea flag-ului este necesar ca in momentul apelarii
+functiei call eax - din cadrul celei de-a cincea secventa de citire - in eax 
+sa fie valoarea binara corespondenta a adresei 0x080485b1 - labelul print_flag.
+Pentru aceasta este necesar incarcarea bufferelor din primele 4 citiri si 
+supraincarcarea memoriei alocate pe stiva din a cincea citire. Cu ajutorul IDA
+am identificat dimensiunea bufferelor. Pentru afisara flagului este necesar
+ca la adresa ebp+0x10 sa fie adresa functiei print flag. Astfel, adunand
+valorile primelor 4 buffere, memoria alocata pe stiva din a cincea citire si
+offset-ul 0x10, obtinem valoarea 765 in decimal. Acest lucru inseamna ca sunt
+necesare 765 de caractere in payload inainde de a fi scrisa adresa. Am creat
+acest payload folosing un simplu generator in c. Generatorul scrie 765 de 
+caractere "a", iar apoi scrie adresa 0x080485b1 in litle endian sub forma de
+char-uri.
+	Atunci cand este rulat executabilul nice cu intrarea din nice_payload
+este afisat NICE_FLAG{8f9e198db11cde3387e7b35dd62dc5a2}.
+
+3. Spargerea binarului v2
+	Analizand fisierul naughty cu ajutorul ida si objdump se observa dupa
+fiecare citire o apelare a unui compare intre o adresa de pe stiva si o adresa
+data ca parametru. Apoi este utilizat un jz - jump if zero - care daca este
+activat sare peste partea din cod vulnerabila: "push 1; call _exit" care face 
+programul sa se incheie; jz sare la partea din cod corespondenta incheierii
+functiei de citire si apoi se revine in main si se trece la urmatoarele
+instructiuni. Pentru a se activa flag-ul zero - ZF este necesar ca cmp-ul sa
+compare 2 valori identice, asta insemnand ca la adresa la care se cauta
+trebuie sa se afle valoarea in hexa cu care se compara. Astfel, este necesara
+incarcarea buffer-ului pana la respectiva adresa cu care si compara si apoi
+adresa. De asemenea pentru a nu avea probleme cu urmatoarele citiri am ales
+sa incarcam fiecare buffer pana la dimensiunea maxima. 
+	Pentru a incarca buffer-ul cu numarul de caractere corespunzator se
+aduna la valoarea alocata pe stiva valoarea la care se cauta adresa (cea de-a
+doua fiind negativa). In acest moment este scrisa valoarea cu care se compara,
+fiind in little endian, iar apoi buffer-ul este umplut in continuare cu 
+caractere pana cand acesta se umple. Acest proces este repetat pentru primele
+3 citiri.
+	La a patra citire, jz sare la o bucata de cod unde se apeleaza
+"call eax". Inainte de apelare in eax se muta valoarea de la adresa ebp+0x14.
+Astfel, este necesar ca la aceasta adresa sa fie 0x080485b1 in little endian.
+Umplem astfel cu caractere tot spatiul alocat pe stiva si inca 20 de
+caractere (valoarea in decimal a lui 0x14), iar aici scriem caracterele
+corespunzatoare scrierii in little endian a adresei print_flagului(0x080485b1).
+	Ruland acum executabilul cu citire din naughty_payload obtinem flag-ul
+NAUGHTY_FLAG{a8859eaebfbf7789d1677aa375cc93cb}.
+

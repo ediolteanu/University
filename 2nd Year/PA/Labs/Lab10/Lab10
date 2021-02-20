@@ -1,0 +1,110 @@
+1. Sa se calculeze de mana fiecare pas dn algoritmul Dijkstra.
+Pasul 1 -> Extrage din coada nodul cu d[u] minim: 1
+d(2) > d(1) + w(1, 2) ?
+Da -> d(2) = 3, p(2) = 1
+d(3) > d(1) + w(1, 3) ?
+Da -> d(3) = 4, p(3) = 1
+d(5) > d(1) + w(1, 5) ?
+Da -> d(5) = 1, p(5) = 1
+d(6) > d(1) + w(1, 6) ?
+Da -> d(6) = 10, p(6) = 1
+d(7) > d(1) + w(1, 7) ?
+Da -> d(7) = 3, p(7) = 1
+Pasul 2 -> Extrage din coada nodul cu d[u] minim: 5
+d(4) > d(5) + w(5, 4) ?
+Da -> d(4) = 4, p(4) = 5
+d(7) > d(5) + w(5, 7) ?
+Da -> d(7) = 2, p(7) = 5
+Pasul 3 -> Extrage din coada nodul cu d[u] minim: 7
+d(3) > d(7) + w(7, 3) ?
+Da -> d(3) = 3, p(3) = 7
+d(4) > d(7) + w(7, 4) ?
+Nu, d si p raman neschimbate
+d(5) > d(7) + w(7, 5) ?
+Nu, d si p raman neschimbate
+Pasul 4 -> Extrage din coada nodul cu d[u] minim: 2
+d(3) > d(2) + w(2, 3) ?
+Nu, d si p raman neschimbate
+Pasul 5 -> Extrage din coada nodul cu d[u] minim: 3
+d(4) > d(3) + w(3, 4) ?
+Nu, d si p raman neschimbate
+d(6) > d(3) + w(3, 6) ?
+Da -> d(6) = 5, p(6) = 3
+Pasul 6 -> Extrage din coada nodul cu d[u] minim: 4
+Pasul 7 -> Extrage din coada nodul cu d[u] minim: 6
+d(4) > d(6) + w(6, 4) ?
+Nu, d si p raman neschimbate
+Pasul 8 -> Coada este vida
+
+Valorile pentru d si p sunt:
+d(1) = 0, p(1) = -1
+d(2) = 3, p(2) = 1
+d(3) = 3, p(3) = 7
+d(4) = 4, p(4) = 5
+d(5) = 1, p(5) = 1
+d(6) = 5, p(6) = 3
+d(7) = 2, p(7) = 5
+
+3. Sa se calculeze de mana fiecare pas din algoritmul Bellman-Ford.
+Pasul 1:
+d(2) > d(1) + w(1, 2) ?
+Da -> d(2) = 3, p(2) = 1
+d(3) > d(1) + w(1, 3) ?
+Da -> d(3) = 4, p(3) = 1
+d(5) > d(1) + w(1, 5) ?
+Da -> d(5) = 1, p(5) = 1
+d(6) > d(1) + w(1, 6) ?
+Da -> d(6) = 10, p(6) = 1
+d(7) > d(1) + w(1, 7) ?
+Da -> d(7) = 3, p(7) = 1
+
+Pasul 2:
+d(3) > d(2) + w(2, 3) ?
+Nu, d si p raman neschimbate
+d(4) > d(3) + w(3, 4) ?
+Da -> d(4) = 6, p(4) = 3
+d(6) > d(3) + w(3, 6) ?
+Da -> d(6) = 6, p(6) = 3
+d(4) > d(5) + w(5, 4) ?
+Da -> d(4) = 4, p(4) = 5
+d(7) > d(5) + w(5, 7) ?
+Da -> d(7) = 2, p(7) = 5
+d(4) > d(6) + w(6, 4) ?
+Nu, d si p raman neschimbate
+d(3) > d(7) + w(7, 3) ?
+Da -> d(3) = 3, p(3) = 7
+d(4) > d(7) + w(7, 4) ?
+Nu, d si p raman neschimbate
+d(5) > d(7) + w(7, 5) ?
+Nu, d si p raman neschimbate
+
+Pasul 3:
+d(4) > d(6) + w(6, 4) ?
+Nu, d si p raman neschimbate
+d(3) > d(7) + w(7, 3) ?
+Nu, d si p raman neschimbate
+d(4) > d(7) + w(7, 4) ?
+Nu, d si p raman neschimbate
+d(5) > d(7) + w(7, 5) ?
+Nu, d si p raman neschimbate
+d(4) > d(3) + w(3, 4) ?
+Nu, d si p raman neschimbate
+d(6) > d(3) + w(3, 6) ?
+Da -> d(6) = 5, p(6) = 3
+
+Pasul 4:
+d(4) > d(6) + w(6, 4) ?
+Nu, d si p raman neschimbate
+
+Pasul 5:
+
+Pasul 6:
+
+d(1) = 0, p(1) = -1
+d(2) = 3, p(2) = 1
+d(3) = 3, p(3) = 7
+d(4) = 4, p(4) = 5
+d(5) = 1, p(5) = 1
+d(6) = 5, p(6) = 3
+d(7) = 2, p(7) = 5
+

@@ -1,0 +1,4 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/CN/lab4/Tonomat_Cola/Tonomat_Cola.srcs/sources_1/new/aparat_cola.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module aparat_cola
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/CN/lab4/Tonomat_Cola/Tonomat_Cola.srcs/sim_1/new/simulare.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module simulare

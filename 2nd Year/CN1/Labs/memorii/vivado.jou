@@ -1,0 +1,47 @@
+#-----------------------------------------------------------
+# Vivado v2019.2.1 (64-bit)
+# SW Build 2729669 on Thu Dec  5 04:49:17 MST 2019
+# IP Build 2729494 on Thu Dec  5 07:38:25 MST 2019
+# Start of session at: Wed May 20 10:28:58 2020
+# Process ID: 8180
+# Current directory: E:/Facultate/CN/memorii
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent10844 E:\Facultate\CN\memorii\memorii.xpr
+# Log file: E:/Facultate/CN/memorii/vivado.log
+# Journal file: E:/Facultate/CN/memorii\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project E:/Facultate/CN/memorii/memorii.xpr
+update_compile_order -fileset sources_1
+launch_simulation
+source sim_dpr.tcl
+close_sim
+launch_simulation
+source sim_dpr.tcl
+close_sim
+launch_simulation
+source sim_dpr.tcl
+close_sim
+launch_simulation
+source sim_dpr.tcl
+close_sim
+launch_simulation
+source sim_dpr.tcl
+close_sim
+launch_simulation
+source sim_dpr.tcl
+close_sim
+launch_simulation
+source sim_dpr.tcl
+close_sim
+launch_simulation
+source sim_dpr.tcl
+close_sim
+launch_simulation
+source sim_dpr.tcl
+close_sim
+launch_simulation
+source sim_dpr.tcl
+close_sim
+launch_simulation
+source sim_dpr.tcl
+close_sim

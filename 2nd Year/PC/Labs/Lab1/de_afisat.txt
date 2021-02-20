@@ -1,0 +1,3 @@
+Acesta este un text.
+Asta e a doua linie.
+Si a treia.

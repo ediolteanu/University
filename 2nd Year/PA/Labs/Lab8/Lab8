@@ -1,0 +1,206 @@
+1. Sa se calculeze de mana o sortare topologica pe graful din curs.
+
+camasa -> a
+cravata -> b
+haina -> c
+pantaloni -> d
+pantofi -> e
+sosete -> f
+veste -> g
+
+Ordine alfabetica:
+Pas 1 -> c(a) = gri, d(a) = 1
+Pas 2 -> c(b) = gri, d(b)  = 2
+Pas 3 -> c(g) = gri, d(g) = 3
+Pas 4 -> c(c) = gri, d(c) = 4
+Pas 5 -> c(c) = negru, f(c) = 5
+Pas 6 -> c(g) = negru, f(g) = 6
+Pas 7 -> c(b) = negru, f(b) = 7
+Pas 8 -> c(d) = gri, d(d) = 8
+Pas 9 -> c(e) = gri, d(e) = 9
+Pas 10 -> c(e) = negru, f(e) = 10
+Pas 11 -> c(d) = negru, f(d) = 11
+Pas 12 -> c(a) = negru, f(a) = 12
+Pas 13 -> c(f) = gri, d(f) = 13
+Pas 14 -> c(f) = negru,  f(f) = 14
+
+a: d = 1, f = 12
+b: d = 2, f = 7
+c: d = 4, f = 5
+d: d = 8, f = 11
+e: d = 9, f = 10
+f: d = 13, f = 14
+g: d = 3, f = 6
+
+Sortare topologica: f-14, a-12, d-11, e-10, b-7, g-6, c-5 
+
+Ordine invers alfabetica:
+Pas 1 -> c(g) = gri, d(g) = 1
+Pas 2 -> c(c) = gri, d(c) = 2
+Pas 3 -> c(c) = negru, f(c) = 3
+Pas 4 -> c(g) = negru, f(g) = 4
+Pas 5 -> c(f) = gri, d(f) = 5
+Pas 6 -> c(e) = gri, d(e) = 6
+Pas 7 -> c(e) = negru, f(e) = 7
+Pas 8 -> c(f) = negru, f(f) = 8
+Pas 9 -> c(d) = gri, d(d) = 9
+Pas 10 -> c(d) = negru, f(d) = 10
+Pas 11 -> c(b) = gri, d(b) = 11
+Pas 12 -> c(b) = negru, f(b) = 12
+Pas 13 -> c(a) = gri, d(a) = 13 
+Pas 14 -> c(a) = negru, f(a) = 14 
+
+Sortare topologica: a-14, b-12, d-10, f-8, e-7, g-6, c-3
+
+
+3. Sa se calculeze de mana toate componentele tare conexe din graf.
+
+Graful orientat:
+A: B, G
+B: C, G
+C: E
+D: C, F
+E: D
+F:
+G: H
+H:
+I: A, J, L
+J: K
+K: I, M
+L: K
+M: N
+N: O
+O: M, P
+P:
+
+DFS:
+Pas 1 -> c(A) = gri, d(A) = 1
+Pas 2 -> c(B) = gri, d(B) = 2
+Pas 3 -> c(C) = gri, d(C) = 3
+Pas 4 -> c(E) = gri, d(E) = 4
+Pas 5 -> c(D) = gri, d(D) = 5
+Pas 6 -> c(F) = gri, d(F) = 6
+Pas 7 -> c(F) = negru, f(F) = 7
+Pas 8 -> c(D) = negru, f(D) = 8
+Pas 9 -> c(E) = negru, f(E) = 9
+Pas 10 -> c(C) = negru, f(C) = 10
+Pas 11 -> c(G) = gri, d(G) = 11
+Pas 12 -> c(H) = gri, d(H) = 12
+Pas 13 -> c(H) = negru, f(H) = 13
+Pas 14 -> c(G) = negru, f(G) = 14
+Pas 15 -> c(B) = negru, f(B) = 15
+Pas 16 -> c(A) = negru, f(A) = 16
+Pas 17 -> c(I) = gri, d(I) = 17
+Pas 18 -> c(J) = gri, d(J) = 18
+Pas 19 -> c(K) = gri, d(K) = 19
+Pas 20 -> c(M) = gri, d(M) = 20
+Pas 21 -> c(N) = gri, d(N) = 21
+Pas 22 -> c(O) = gri, d(O) = 22
+Pas 23 -> c(P) = gri, d(P) = 23
+Pas 24 -> c(P) = negru, f(P) = 24
+Pas 25 -> c(O) = negru, f(O) = 25
+Pas 26 -> c(N) = negru, f(N) = 26
+Pas 27 -> c(M) = negru, f(M) = 27
+Pas 28 -> c(K) = negru, f(K) = 28
+Pas 29 -> c(J) = negru, f(J) = 29
+Pas 30 -> c(L) = gri, d(L) = 30
+Pas 31 -> c(L) = negru, f(L) = 31
+Pas 32 -> c(I) = negru, f(I) = 32 
+
+Sortare topologica: 
+I, L, J, K, M, N, O, P, A, B, G, H, C, E, D, F
+
+Graful transpus:
+A: I
+B: A
+C: B, D
+D: E
+E: C
+F: D
+G: A, B
+H: G
+I: K
+J: I
+K: J, L
+L: I
+M: K, O
+N: M
+O: N
+P: O
+
+DFS:
+Pas 1 -> c(I) = gri, d(I) = 1
+Pas 2 -> c(K) = gri, d(K) = 2
+Pas 3 -> c(L) = gri, d(L) = 3
+Pas 4 -> c(L) = negru, f(L) = 4
+Pas 5 -> c(J) = gri, d(J) = 5
+Pas 6 -> c(J) = negru, f(J) = 6
+Pas 7 -> c(K) = negru, f(K) = 7
+Pas 8 -> c(I) = negru, f(I) = 8
+
+Componenta tare conexa CTC -> I, K, L, J
+
+Pas 9 -> c(M) = gri, d(M) = 9
+
+Pas 10 -> c(O) = gri, d(O) = 10
+Pas 11 -> c(N) = gri, d(N) = 11
+Pas 12 -> c(N) = negru, f(N) = 12
+Pas 13 -> c(O) = negru, f(O) = 13
+Pas 14 -> c(M) = negru, f(M) = 14
+
+Componenta tare conexa -> M, O, N
+
+Pas 15 -> c(P) = gri, d(P) = 15
+Pas 16 -> c(P) = negru, f(P) = 16
+
+Componente tare conexe -> P
+
+Pas 16 -> c(A) = gri, d(A) = 17
+Pas 16 -> c(A) = negru, f(A) = 18
+
+Componente tare conexe -> A
+
+Pas 16 -> c(B) = gri, d(B) = 19
+Pas 16 -> c(B) = negru, f(B) = 20
+
+Componente tare conexe -> B
+
+Pas 16 -> c(G) = gri, d(G) = 21
+Pas 16 -> c(G) = negru, f(G) = 22
+
+Componente tare conexe -> G
+
+Pas 16 -> c(H) = gri, d(H) = 23
+Pas 16 -> c(H) = negru, f(H) = 24
+
+Componente tare conexe -> H
+
+Pas 16 -> c(C) = gri, d(C) = 25
+Pas 16 -> c(D) = gri, d(D) = 26
+Pas 16 -> c(E) = gri, d(E) = 27
+Pas 16 -> c(E) = negru, f(E) = 28
+Pas 16 -> c(D) = negru, f(D) = 29
+Pas 16 -> c(C) = negru, f(C) = 30
+
+Componente tare conexe -> C, D, E
+
+Pas 16 -> c(F) = gri, c(F) = 31
+Pas 16 -> c(F) = negru, f(F) = 32 
+
+Componente tare conexe -> F
+
+Componente tare conexe:
+	1: I, J, K, L (radacina in I)
+	2: M, O, N (radacina in M)
+	3: P
+	4: A
+	5: B
+	6: G
+	7: H
+	8: C, D, E (radacina in C)
+	9: F
+
+
+
+
+

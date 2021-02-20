@@ -1,0 +1,275 @@
+1. Prim de mana, plecand din nodul i.
+
+Pasul 1:
+Coada:
+i -> d(i) = 0
+a -> d(a) = INF
+b -> d(b) = INF
+c -> d(c) = INF
+d -> d(d) = INF
+e -> d(e) = INF
+f -> d(f) = INF
+g -> d(g) = INF
+h -> d(h) = INF
+j -> d(j) = INF
+k -> d(k) = INF
+l -> d(l) = INF
+
+Extrage din coada nodul cu d[u] minim: i
+d(a) >  w(i, a) ?
+Da -> d(a) = 3, p(a) = i
+d(j) >  w(i, j) ?
+Da -> d(j) = 5, p(j) = i
+d(l) >  w(i, l) ?
+Da -> d(l) = 8, p(l) = i
+
+Pasul 2:
+Coada:
+a -> d(a) = 3
+b -> d(b) = INF
+c -> d(c) = INF
+d -> d(d) = INF
+e -> d(e) = INF
+f -> d(f) = INF
+g -> d(g) = INF
+h -> d(h) = INF
+j -> d(j) = 5
+k -> d(k) = INF
+l -> d(l) = 8
+
+Extrage din coada nodul cu d[u] minim: a
+d(b) >  w(a, b) ?
+Da -> d(b) = 9, p(b) = a
+d(g) >  w(a, g) ?
+Da -> d(g) = 10, p(g) = a
+d(h) >  w(a, h) ?
+Da -> d(h) = 6, p(h) = a
+d(i) >  w(a, i) ?
+Nu, d si p raman neschimbate
+
+Pasul 3:
+Coada:
+b -> d(b) = 9
+c -> d(c) = INF
+d -> d(d) = INF
+e -> d(e) = INF
+f -> d(f) = INF
+g -> d(g) = 10
+h -> d(h) = 6
+j -> d(j) = 5
+k -> d(k) = INF
+l -> d(l) = 8
+
+Extrage din coada nodul cu d[u] minim: j
+d(i) >  w(j, i) ?
+Nu, d si p raman neschimbate
+d(k) >  w(j, k) ?
+Da -> d(k) = 14, p(k) = j
+
+Pasul 4:
+Coada:
+b -> d(b) = 9
+c -> d(c) = INF
+d -> d(d) = INF
+e -> d(e) = INF
+f -> d(f) = INF
+g -> d(g) = 10
+h -> d(h) = 6
+k -> d(k) = 14
+l -> d(l) = 8
+
+Extrage din coada nodul cu d[u] minim: h
+d(a) >  w(h, a) ?
+Nu, d si p raman neschimbate
+d(g) >  w(h, g) ?
+Da -> d(g) = 4, p(g) = h
+
+Pasul 5:
+Coada:
+b -> d(b) = 9
+c -> d(c) = INF
+d -> d(d) = INF
+e -> d(e) = INF
+f -> d(f) = INF
+g -> d(g) = 4
+k -> d(k) = 14
+l -> d(l) = 8
+
+Extrage din coada nodul cu d[u] minim: g
+d(a) >  w(g, a) ?
+Nu, d si p raman neschimbate
+d(b) >  w(g, b) ?
+Nu, d si p raman neschimbate
+d(h) >  w(g, h) ?
+Da -> d(h) = 4, p(h) = g
+
+Pasul 6:
+Coada:
+b -> d(b) = 9
+c -> d(c) = INF
+d -> d(d) = INF
+e -> d(e) = INF
+f -> d(f) = INF
+k -> d(k) = 14
+l -> d(l) = 8
+
+Extrage din coada nodul cu d[u] minim: l
+d(i) >  w(l, i) ?
+Nu, d si p raman neschimbate
+d(k) >  w(l, k) ?
+Da -> d(k) = 7, p(k) = l
+
+Pasul 7:
+Coada:
+b -> d(b) = 9
+c -> d(c) = INF
+d -> d(d) = INF
+e -> d(e) = INF
+f -> d(f) = INF
+k -> d(k) = 7
+
+Extrage din coada nodul cu d[u] minim: k
+d(j) >  w(k, j) ?
+Nu, d si p raman neschimbate
+d(l) >  w(k, l) ?
+Da -> d(l) = 7, p(l) = k
+
+Pasul 8:
+Coada:
+b -> d(b) = 9
+c -> d(c) = INF
+d -> d(d) = INF
+e -> d(e) = INF
+f -> d(f) = INF
+
+Extrage din coada nodul cu d[u] minim: b
+d(a) >  w(b, a) ?
+Nu, d si p raman neschimbate
+d(c) >  w(b, c) ?
+Da -> d(c) = 5, p(c) = b
+d(g) >  w(b, g) ?
+Nu, d si p raman neschimbate
+
+Pasul 9:
+Coada:
+c -> d(c) = 5
+d -> d(d) = INF
+e -> d(e) = INF
+f -> d(f) = INF
+
+Extrage din coada nodul cu d[u] minim: c
+d(b) >  w(c, b) ?
+Da -> d(b) = 5, p(b) = c
+d(d) >  w(c, d) ?
+Da -> d(d) = 8, p(d) = c
+d(e) >  w(c, e) ?
+Da -> d(e) = 12, p(e) = c
+
+Pasul 10:
+Coada:
+d -> d(d) = 8
+e -> d(e) = 12
+f -> d(f) = INF
+
+Extrage din coada nodul cu d[u] minim: d
+d(c) >  w(d, c) ?
+Nu, d si p raman neschimbate
+d(f) >  w(d, f) ?
+Da -> d(f) = 9, p(f) = d
+
+Pasul 11:
+Coada:
+e -> d(e) = 12
+f -> d(f) = 9
+
+Extrage din coada nodul cu d[u] minim: f
+d(d) >  w(f, d) ?
+Nu, d si p raman neschimbate
+d(e) >  w(f, e) ?
+Da -> d(e) = 2, p(e) = f
+
+Pasul 12:
+Coada:
+e -> d(e) = 2
+
+Extrage din coada nodul cu d[u] minim: e
+d(c) >  w(e, c) ?
+Nu, d si p raman neschimbate
+d(f) >  w(e, f) ?
+Da -> d(f) = 2, p(f) = e
+
+AMA rezultat contine muchiile:
+a-i
+j-i
+h-a
+g-h
+l-i
+k-l
+b-a
+c-b
+d-c
+f-d
+e-f
+
+
+3. Kruskal de mana, pornind din nodul i
+
+Iau muchia e-f si verific daca se intersecteaza arborii nodurilor.
+Arborii nu se intersecteaza, deci adaug muchia in AMA.
+
+Iau muchia a-i si verific daca se intersecteaza arborii nodurilor.
+Arborii nu se intersecteaza, deci adaug muchia in AMA.
+
+Iau muchia g-h si verific daca se intersecteaza arborii nodurilor.
+Arborii nu se intersecteaza, deci adaug muchia in AMA.
+
+Iau muchia b-c si verific daca se intersecteaza arborii nodurilor.
+Arborii nu se intersecteaza, deci adaug muchia in AMA.
+
+Iau muchia i-j si verific daca se intersecteaza arborii nodurilor.
+Arborii nu se intersecteaza, deci adaug muchia in AMA.
+
+Iau muchia a-h si verific daca se intersecteaza arborii nodurilor.
+Arborii nu se intersecteaza, deci adaug muchia in AMA.
+
+Iau muchia k-l si verific daca se intersecteaza arborii nodurilor.
+Arborii nu se intersecteaza, deci adaug muchia in AMA.
+
+Iau muchia i-l si verific daca se intersecteaza arborii nodurilor.
+Arborii nu se intersecteaza, deci adaug muchia in AMA.
+
+Iau muchia c-d si verific daca se intersecteaza arborii nodurilor.
+Arborii nu se intersecteaza, deci adaug muchia in AMA.
+
+Iau muchia d-f si verific daca se intersecteaza arborii nodurilor.
+Arborii nu se intersecteaza, deci adaug muchia in AMA.
+
+Iau muchia a-b si verific daca se intersecteaza arborii nodurilor.
+Arborii nu se intersecteaza, deci adaug muchia in AMA.
+
+Iau muchia a-g si verific daca se intersecteaza arborii nodurilor.
+Arborii se intersecteaza, deci NU adaug muchia in AMA.
+
+Iau muchia b-g si verific daca se intersecteaza arborii nodurilor.
+Arborii se intersecteaza, deci NU adaug muchia in AMA.
+
+Iau muchia c-e si verific daca se intersecteaza arborii nodurilor.
+Arborii se intersecteaza, deci NU adaug muchia in AMA.
+
+Iau muchia j-k si verific daca se intersecteaza arborii nodurilor.
+Arborii se intersecteaza, deci NU adaug muchia in AMA.
+
+
+AMA rezultat contine muchiile:
+e-f
+a-i
+g-h
+b-c
+i-j
+a-h
+k-l
+i-l
+c-d
+d-f
+a-b
+

@@ -1,0 +1,9 @@
+0.6
+2019.2
+Dec  5 2019
+05:06:03
+E:/CN/lab4/Tonomat_Cola/Tonomat_Cola.sim/sim_1/behav/xsim/glbl.v,1573089660,verilog,,,,glbl,,,,,,,,
+E:/CN/lab4/Tonomat_Cola/Tonomat_Cola.srcs/sim_1/new/simulare.v,1585330228,verilog,,,,simulare,,,,,,,,
+E:/CN/lab4/Tonomat_Cola/Tonomat_Cola.srcs/sources_1/new/Aparat.v,1585327351,verilog,,,,Aparat,,,,,,,,
+E:/CN/lab4/Tonomat_Cola/Tonomat_Cola.srcs/sources_1/new/aparat_cola.v,1585329447,verilog,,E:/CN/lab4/Tonomat_Cola/Tonomat_Cola.srcs/sim_1/new/simulare.v,,aparat_cola,,,,,,,,
+E:/CN/lab4/Tonomat_Cola/Tonomat_Cola.srcs/sources_1/new/clock.v,1585327181,verilog,,E:/CN/lab4/Tonomat_Cola/Tonomat_Cola.srcs/sources_1/new/Aparat.v,,clock,,,,,,,,

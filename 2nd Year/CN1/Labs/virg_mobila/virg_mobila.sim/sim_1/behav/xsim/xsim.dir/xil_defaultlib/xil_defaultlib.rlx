@@ -1,0 +1,22 @@
+0.6
+2019.2
+Dec  5 2019
+05:06:03
+E:/Facultate/CN/virg_mobila/virg_mobila.sim/sim_1/behav/xsim/glbl.v,1573089660,verilog,,,,glbl,,,,,,,,
+E:/Facultate/CN/virg_mobila/virg_mobila.srcs/sim_1/new/simulation.v,1588755746,verilog,,,,simulation,,,,,,,,
+E:/Facultate/CN/virg_mobila/virg_mobila.srcs/sources_1/new/adjust_exp.v,1588370595,verilog,,E:/Facultate/CN/virg_mobila/virg_mobila.srcs/sources_1/new/allign_mantise.v,,adjust_exp,,,,,,,,
+E:/Facultate/CN/virg_mobila/virg_mobila.srcs/sources_1/new/allign_mantise.v,1588368010,verilog,,E:/Facultate/CN/virg_mobila/virg_mobila.srcs/sources_1/new/concat.v,,allign_mantise,,,,,,,,
+E:/Facultate/CN/virg_mobila/virg_mobila.srcs/sources_1/new/concat.v,1588359009,verilog,,E:/Facultate/CN/virg_mobila/virg_mobila.srcs/sources_1/new/exp_compare.v,,concat,,,,,,,,
+E:/Facultate/CN/virg_mobila/virg_mobila.srcs/sources_1/new/exp_compare.v,1588754130,verilog,,E:/Facultate/CN/virg_mobila/virg_mobila.srcs/sources_1/new/norm.v,,exp_compare,,,,,,,,
+E:/Facultate/CN/virg_mobila/virg_mobila.srcs/sources_1/new/norm.v,1588370434,verilog,,E:/Facultate/CN/virg_mobila/virg_mobila.srcs/sources_1/new/op_m.v,,norm,,,,,,,,
+E:/Facultate/CN/virg_mobila/virg_mobila.srcs/sources_1/new/op_m.v,1588376498,verilog,,E:/Facultate/CN/virg_mobila/virg_mobila.srcs/sources_1/new/registru16.v,,op_m,,,,,,,,
+E:/Facultate/CN/virg_mobila/virg_mobila.srcs/sources_1/new/registru16.v,1588753724,verilog,,E:/Facultate/CN/virg_mobila/virg_mobila.srcs/sources_1/new/registru24.v,,registru16,,,,,,,,
+E:/Facultate/CN/virg_mobila/virg_mobila.srcs/sources_1/new/registru24.v,1588754889,verilog,,E:/Facultate/CN/virg_mobila/virg_mobila.srcs/sources_1/new/registru26.v,,registru24,,,,,,,,
+E:/Facultate/CN/virg_mobila/virg_mobila.srcs/sources_1/new/registru26.v,1588753921,verilog,,E:/Facultate/CN/virg_mobila/virg_mobila.srcs/sources_1/new/registru48.v,,registru26,,,,,,,,
+E:/Facultate/CN/virg_mobila/virg_mobila.srcs/sources_1/new/registru48.v,1588753812,verilog,,E:/Facultate/CN/virg_mobila/virg_mobila.srcs/sources_1/new/registru56.v,,registru48,,,,,,,,
+E:/Facultate/CN/virg_mobila/virg_mobila.srcs/sources_1/new/registru56.v,1588753867,verilog,,E:/Facultate/CN/virg_mobila/virg_mobila.srcs/sources_1/new/registru8.v,,registru56,,,,,,,,
+E:/Facultate/CN/virg_mobila/virg_mobila.srcs/sources_1/new/registru8.v,1588753773,verilog,,E:/Facultate/CN/virg_mobila/virg_mobila.srcs/sources_1/new/sum1bit.v,,registru8,,,,,,,,
+E:/Facultate/CN/virg_mobila/virg_mobila.srcs/sources_1/new/sum1bit.v,1588363656,verilog,,E:/Facultate/CN/virg_mobila/virg_mobila.srcs/sources_1/new/sum24biti.v,,sum1bit,,,,,,,,
+E:/Facultate/CN/virg_mobila/virg_mobila.srcs/sources_1/new/sum24biti.v,1588375184,verilog,,E:/Facultate/CN/virg_mobila/virg_mobila.srcs/sources_1/new/sum4biti.v,,sum24biti,,,,,,,,
+E:/Facultate/CN/virg_mobila/virg_mobila.srcs/sources_1/new/sum4biti.v,1588363660,verilog,,E:/Facultate/CN/virg_mobila/virg_mobila.srcs/sources_1/new/tot.v,,sum4biti,,,,,,,,
+E:/Facultate/CN/virg_mobila/virg_mobila.srcs/sources_1/new/tot.v,1588755401,verilog,,E:/Facultate/CN/virg_mobila/virg_mobila.srcs/sim_1/new/simulation.v,,tot,,,,,,,,

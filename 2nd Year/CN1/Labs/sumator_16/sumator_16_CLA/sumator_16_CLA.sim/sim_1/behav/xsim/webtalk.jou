@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Webtalk v2019.2.1 (64-bit)
+# SW Build 2729669 on Thu Dec  5 04:49:17 MST 2019
+# IP Build 2729494 on Thu Dec  5 07:38:25 MST 2019
+# Start of session at: Sat May  2 02:37:52 2020
+# Process ID: 14656
+# Current directory: E:/Facultate/CN/sumator_16/sumator_16_CLA/sumator_16_CLA.sim/sim_1/behav/xsim
+# Command line: wbtcv.exe -mode batch -source E:/Facultate/CN/sumator_16/sumator_16_CLA/sumator_16_CLA.sim/sim_1/behav/xsim/xsim.dir/test_sim16_behav/webtalk/xsim_webtalk.tcl -notrace
+# Log file: E:/Facultate/CN/sumator_16/sumator_16_CLA/sumator_16_CLA.sim/sim_1/behav/xsim/webtalk.log
+# Journal file: E:/Facultate/CN/sumator_16/sumator_16_CLA/sumator_16_CLA.sim/sim_1/behav/xsim\webtalk.jou
+#-----------------------------------------------------------
+source E:/Facultate/CN/sumator_16/sumator_16_CLA/sumator_16_CLA.sim/sim_1/behav/xsim/xsim.dir/test_sim16_behav/webtalk/xsim_webtalk.tcl -notrace

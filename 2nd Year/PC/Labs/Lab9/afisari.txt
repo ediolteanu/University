@@ -1,0 +1,121 @@
+127.0.0.1
+127.0.0.1
+127.4.4.4
+127.1.1.1
+127.3.3.3
+127.2.2.2
+127.1.1.1
+127.4.4.4
+127.2.2.2
+127.3.3.3
+127.42.42.42
+B)
+::1
+::1
+::3
+::4
+::2
+::1
+::2
+::3
+::4
+::1
+C)
+
+; <<>> DiG 9.11.5-P1-1ubuntu2.6-Ubuntu <<>> MX protocoale.xyz
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 37501
+;; flags: qr rd ra; QUERY: 1, ANSWER: 3, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 65494
+;; QUESTION SECTION:
+;protocoale.xyz.			IN	MX
+
+;; ANSWER SECTION:
+protocoale.xyz.		275	IN	MX	30 alt3.gmail-smtp-in.l.google.com.
+protocoale.xyz.		275	IN	MX	10 alt1.gmail-smtp-in.l.google.com.
+protocoale.xyz.		275	IN	MX	20 alt2.gmail-smtp-in.l.google.com.
+
+;; Query time: 1 msec
+;; SERVER: 127.0.0.53#53(127.0.0.53)
+;; WHEN: Wed Apr 15 15:46:34 EEST 2020
+;; MSG SIZE  rcvd: 132
+
+E)
+
+; <<>> DiG 9.11.5-P1-1ubuntu2.6-Ubuntu <<>> @8.8.8.8 google.com
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 52589
+;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 512
+;; QUESTION SECTION:
+;google.com.			IN	A
+
+;; ANSWER SECTION:
+google.com.		185	IN	A	172.217.16.110
+
+;; Query time: 30 msec
+;; SERVER: 8.8.8.8#53(8.8.8.8)
+;; WHEN: Wed Apr 15 15:58:10 EEST 2020
+;; MSG SIZE  rcvd: 55
+
+
+; <<>> DiG 9.11.5-P1-1ubuntu2.6-Ubuntu <<>> @8.8.8.8 google.com
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 21931
+;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 512
+;; QUESTION SECTION:
+;google.com.			IN	A
+
+;; ANSWER SECTION:
+google.com.		196	IN	A	172.217.19.110
+
+;; Query time: 28 msec
+;; SERVER: 8.8.8.8#53(8.8.8.8)
+;; WHEN: Wed Apr 15 15:58:11 EEST 2020
+;; MSG SIZE  rcvd: 55
+
+
+; <<>> DiG 9.11.5-P1-1ubuntu2.6-Ubuntu <<>> @8.8.8.8 google.com
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 11334
+;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 512
+;; QUESTION SECTION:
+;google.com.			IN	A
+
+;; ANSWER SECTION:
+google.com.		99	IN	A	172.217.20.14
+
+;; Query time: 46 msec
+;; SERVER: 8.8.8.8#53(8.8.8.8)
+;; WHEN: Wed Apr 15 15:58:12 EEST 2020
+;; MSG SIZE  rcvd: 55
+
+F)
+single-v4.protocoale.xyz. 299	IN	A	127.0.0.1
+single.protocoale.xyz.	282	IN	A	127.0.0.1
+dorinel.protocoale.xyz.	299	IN	A	127.42.0.0
+multi-v4.protocoale.xyz. 280	IN	A	127.1.1.1
+multi-v4.protocoale.xyz. 280	IN	A	127.2.2.2
+multi-v4.protocoale.xyz. 280	IN	A	127.3.3.3
+multi-v4.protocoale.xyz. 280	IN	A	127.4.4.4
+multi.protocoale.xyz.	273	IN	A	127.2.2.2
+multi.protocoale.xyz.	273	IN	A	127.3.3.3
+multi.protocoale.xyz.	273	IN	A	127.1.1.1
+multi.protocoale.xyz.	273	IN	A	127.4.4.4

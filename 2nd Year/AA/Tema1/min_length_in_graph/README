@@ -1,0 +1,58 @@
+Nume: Olteanu Eduard-Florin
+Grupa: 324CD
+
+2.5 Drumuri minimi in graf
+
+Am ales costul minim de la un nod la toate celelalte, respectiv algoritmii 
+Dijkstra, Bellman-Ford si Dijkstra adaptat(Dial).
+
+In algo.h este prototipul functiei shortestPath care este mai apoi implementata
+de pentru fiecare din cei trei algoritmi in algo1.cpp, algo2.cpp, algo3.cpp.
+
+Pentru algoritmi am ales compararea prin teste de grafuri orientate.
+
+Testele principale se regasesc in folderul "in". Ele sunt facute conform 
+exemplului: pe prima linie sunt N - numarul de noduri, M - numarul de muchii si
+nodul de start, iar pe urmatoarele M linii sunt cele M muchii: muchia de la u
+la v si cost w. Pentru primele 10 teste costul este intre 1-100 si pentru
+urmatoarele 10 este intre 1-10. Diferenta de cost este utila in compararea 
+eficientei dintre Dijkstra si Dial. In "out" se gasesc ref-urile pentru testele
+din "in" cu care se compara corectitudinea algoritmilor. Fisierele ref sunt si
+ele generate conform exemplului, respectiv toate costurile minime de la nodul
+de start la celelalte, insemnand ca sunt N - 1 costuri, fara 0.
+ 
+De asemenea, in folderul other_tests sunt teste cu costuri negative pentru
+testarea functionalitatii algoritmului Bellman-Ford in cazul in care sunt si
+costuri negative. In cazul in care se gasesc cicluri de costuri negative, adica
+pentru testele 1-9, in fisiere se afiseaza 0 pentru costuri.
+
+Disclaimer: Pentru algoritmi m-am inspirat de pe geeksforgeeks.
+Dijkstra: https://bit.ly/33ytSYU
+Dial: https://bit.ly/35PCLPI
+Bellman-Ford: https://bit.ly/2OxBOFB
+
+In algo1.cpp este implementat algoritmul lui Dijkstra in varianta fara binary
+heap. 
+In algo2.cpp este implementat algoritmul lui Dial.
+In algo3.cpp este implementat algoritmul Bellman-Ford.
+
+In test.cpp sunt este apelata functia din algo.h, iar in functie de link-edit
+din Makefile sunt testati cei 3 algoritmi. Functia read_input citeste datele 
+din fisierele in. In functia verify output se extrag in vectorul expected 
+valorile din output. Apoi in run_test este apelata citirea, algoritmul si
+apoi se compara vectorul output rezultat in urma algoritmului cu cel expected
+si se afiseaza daca testul este coresct sau nu.
+
+In fisierul test_bellman-ford_negatives.cpp este aceeasi structura ca si in 
+test.cpp doar ca sunt testate doar fisierele care contin si muchii negative,
+iar in Makefile este link-editat numai cu algoritmul Bellman-Ford, deoarece
+ceilalti doi algoritmi nu pot rezolva grafuri cu muchii negative.
+
+In Makefile avem o regula build care apeleaza cate o alta functie build pentru
+fiecare algoritm. Se genereaza mai intai fisierele .o si apoi se link-editeaza
+impreuna cu fisierul test.o. Apoi in run este apelat fiecare executabil
+generat de regula build. 
+De asemenea mai exista inca o regula build - build_bellman-ford_negatives care
+creeaza executabilul pentru testul pentru muchii negative, si o regula run care
+il ruleaza.
+La final este o regula clean care sterge toate executabilele si fisielere .o.

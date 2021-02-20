@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1574949823 source:e:\aa\tema1\min_length_in_graph\bellman-ford.cpp
+	<stdio.h>
+	<bits/stdc++.h>
+
+1574949823 source:e:\aa\tema1\min_length_in_graph\dial.cpp
+	<stdio.h>
+	<bits/stdc++.h>
+
+1574949821 source:e:\aa\tema1\min_length_in_graph\dijkstra.cpp
+	<stdio.h>
+
+1574949910 source:e:\aa\tema1\min_length_in_graph\test.cpp
+	<iostream>
+

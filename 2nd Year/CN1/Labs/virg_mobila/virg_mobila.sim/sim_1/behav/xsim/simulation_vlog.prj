@@ -1,0 +1,25 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"../../../../virg_mobila.srcs/sources_1/new/adjust_exp.v" \
+"../../../../virg_mobila.srcs/sources_1/new/allign_mantise.v" \
+"../../../../virg_mobila.srcs/sources_1/new/concat.v" \
+"../../../../virg_mobila.srcs/sources_1/new/exp_compare.v" \
+"../../../../virg_mobila.srcs/sources_1/new/norm.v" \
+"../../../../virg_mobila.srcs/sources_1/new/op_m.v" \
+"../../../../virg_mobila.srcs/sources_1/new/registru16.v" \
+"../../../../virg_mobila.srcs/sources_1/new/registru24.v" \
+"../../../../virg_mobila.srcs/sources_1/new/registru26.v" \
+"../../../../virg_mobila.srcs/sources_1/new/registru48.v" \
+"../../../../virg_mobila.srcs/sources_1/new/registru56.v" \
+"../../../../virg_mobila.srcs/sources_1/new/registru8.v" \
+"../../../../virg_mobila.srcs/sources_1/new/sum1bit.v" \
+"../../../../virg_mobila.srcs/sources_1/new/sum24biti.v" \
+"../../../../virg_mobila.srcs/sources_1/new/sum4biti.v" \
+"../../../../virg_mobila.srcs/sources_1/new/tot.v" \
+"../../../../virg_mobila.srcs/sim_1/new/simulation.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

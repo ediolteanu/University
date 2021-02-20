@@ -1,0 +1,300 @@
+{
+  "design": {
+    "design_info": {
+      "boundary_crc": "0x0",
+      "device": "xc7a100tcsg324-1",
+      "name": "design_circuit",
+      "synth_flow_mode": "Hierarchical",
+      "tool_version": "2019.2.1"
+    },
+    "design_tree": {
+      "counter_0": "",
+      "counter_1": "",
+      "bin_to_bcd_0": "",
+      "bin_to_bcd_1": "",
+      "display_0": "",
+      "div_clk_0": ""
+    },
+    "ports": {
+      "pauza_0": {
+        "direction": "I"
+      },
+      "reset_0": {
+        "type": "rst",
+        "direction": "I"
+      },
+      "clk_in_0": {
+        "direction": "I"
+      },
+      "clk_out_led_0": {
+        "direction": "O"
+      }
+    },
+    "components": {
+      "counter_0": {
+        "vlnv": "xilinx.com:module_ref:counter:1.0",
+        "xci_name": "design_circuit_counter_0_1",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "counter",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk_out_led": {
+            "direction": "I"
+          },
+          "pauza": {
+            "direction": "I"
+          },
+          "reset": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "valoare_bin": {
+            "direction": "O",
+            "left": "5",
+            "right": "0"
+          },
+          "carry_out": {
+            "direction": "O"
+          }
+        }
+      },
+      "counter_1": {
+        "vlnv": "xilinx.com:module_ref:counter:1.0",
+        "xci_name": "design_circuit_counter_0_2",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "counter",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk_out_led": {
+            "direction": "I"
+          },
+          "pauza": {
+            "direction": "I"
+          },
+          "reset": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "valoare_bin": {
+            "direction": "O",
+            "left": "5",
+            "right": "0"
+          },
+          "carry_out": {
+            "direction": "O"
+          }
+        }
+      },
+      "bin_to_bcd_0": {
+        "vlnv": "xilinx.com:module_ref:bin_to_bcd:1.0",
+        "xci_name": "design_circuit_bin_to_bcd_0_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "bin_to_bcd",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "valoare_bin": {
+            "direction": "I",
+            "left": "5",
+            "right": "0"
+          },
+          "BCD0": {
+            "direction": "O",
+            "left": "3",
+            "right": "0"
+          },
+          "BCD1": {
+            "direction": "O",
+            "left": "3",
+            "right": "0"
+          }
+        }
+      },
+      "bin_to_bcd_1": {
+        "vlnv": "xilinx.com:module_ref:bin_to_bcd:1.0",
+        "xci_name": "design_circuit_bin_to_bcd_0_1",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "bin_to_bcd",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "valoare_bin": {
+            "direction": "I",
+            "left": "5",
+            "right": "0"
+          },
+          "BCD0": {
+            "direction": "O",
+            "left": "3",
+            "right": "0"
+          },
+          "BCD1": {
+            "direction": "O",
+            "left": "3",
+            "right": "0"
+          }
+        }
+      },
+      "display_0": {
+        "vlnv": "xilinx.com:module_ref:display:1.0",
+        "xci_name": "design_circuit_display_0_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "display",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk_out_seg": {
+            "direction": "I"
+          },
+          "reset": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "BCD0": {
+            "direction": "I",
+            "left": "3",
+            "right": "0"
+          },
+          "BCD1": {
+            "direction": "I",
+            "left": "3",
+            "right": "0"
+          },
+          "BCD2": {
+            "direction": "I",
+            "left": "3",
+            "right": "0"
+          },
+          "BCD3": {
+            "direction": "I",
+            "left": "3",
+            "right": "0"
+          },
+          "An": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          },
+          "Seg": {
+            "direction": "O",
+            "left": "6",
+            "right": "0"
+          },
+          "DP": {
+            "direction": "O"
+          }
+        }
+      },
+      "div_clk_0": {
+        "vlnv": "xilinx.com:module_ref:div_clk:1.0",
+        "xci_name": "design_circuit_div_clk_0_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "div_clk",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk_in": {
+            "direction": "I"
+          },
+          "reset": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "clk_out_led": {
+            "direction": "O"
+          },
+          "clk_out_seg": {
+            "direction": "O"
+          }
+        }
+      }
+    },
+    "nets": {
+      "counter_0_valoare_bin": {
+        "ports": [
+          "counter_0/valoare_bin",
+          "bin_to_bcd_0/valoare_bin"
+        ]
+      },
+      "counter_0_carry_out": {
+        "ports": [
+          "counter_0/carry_out",
+          "counter_1/clk_out_led"
+        ]
+      },
+      "pauza_0_1": {
+        "ports": [
+          "pauza_0",
+          "counter_0/pauza",
+          "counter_1/pauza"
+        ]
+      },
+      "reset_0_1": {
+        "ports": [
+          "reset_0",
+          "counter_0/reset",
+          "display_0/reset",
+          "counter_1/reset",
+          "div_clk_0/reset"
+        ]
+      },
+      "counter_1_valoare_bin": {
+        "ports": [
+          "counter_1/valoare_bin",
+          "bin_to_bcd_1/valoare_bin"
+        ]
+      },
+      "bin_to_bcd_0_BCD0": {
+        "ports": [
+          "bin_to_bcd_0/BCD0",
+          "display_0/BCD2"
+        ]
+      },
+      "bin_to_bcd_0_BCD1": {
+        "ports": [
+          "bin_to_bcd_0/BCD1",
+          "display_0/BCD3"
+        ]
+      },
+      "bin_to_bcd_1_BCD0": {
+        "ports": [
+          "bin_to_bcd_1/BCD0",
+          "display_0/BCD0"
+        ]
+      },
+      "bin_to_bcd_1_BCD1": {
+        "ports": [
+          "bin_to_bcd_1/BCD1",
+          "display_0/BCD1"
+        ]
+      },
+      "div_clk_0_clk_out_seg": {
+        "ports": [
+          "div_clk_0/clk_out_seg",
+          "display_0/clk_out_seg"
+        ]
+      },
+      "clk_in_0_1": {
+        "ports": [
+          "clk_in_0",
+          "div_clk_0/clk_in"
+        ]
+      },
+      "div_clk_0_clk_out_led": {
+        "ports": [
+          "div_clk_0/clk_out_led",
+          "counter_0/clk_out_led",
+          "clk_out_led_0"
+        ]
+      }
+    }
+  }
+}

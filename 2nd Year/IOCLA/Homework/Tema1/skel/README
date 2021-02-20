@@ -1,0 +1,27 @@
+Nume: Olteanu Eduard-Florin
+Grupa: 324CD
+
+Tema1-IOCLA: PrefixAST
+
+In implementarea temei am folosit in mod abundent stiva pentru a stoca numele
+si rezultatele operatiilor.
+
+Am creat o functie - string_to_int care transforma string-ul din nod care contine
+numarul in integer, parcurgand fiecare byte din string. De asemenea, daca primul
+byte din numar este "-", numarul este negativ si este inmultit cu -1 la finalul
+functiei. 
+
+In main am considerat arborele ca fiind un "vector" de adrese, la fiecare 32 de 
+bytes fiind un nod. Am calculat dimensiunea ocupata de noduri si am folosit-o
+la parcurgerea acestora. Am parcurs de la ultimul nod introdus in arbore catre
+primul, deoarece astfel puteam efectua operatiile pe rand, in ordinea corecta,
+fara a trebui sa ma intorc intr-un nod anterior vizitat. Astfel, pentru fiecare
+nod este verificat daca este operator sau numar. Daca este operator, jump-ul
+ne duce catre codul respectiv operatiei, unde sunt extrase de pe stiva 2 numere
+si se efectueaza operatia, rezultatul fiind pus inapoi pe stiva. De asemenea,
+dupa fiecare operatie se verifica daca mai sunt noduri de parcurs, daca da se
+continua, daca nu se opreste. Daca nu este un operator, ci un numar, este
+apelata functia string_to_int, return-ul ei fiind pus pe stiva, reprezentand un 
+numar ce va urma sa fie folosit la o operatie. Deoarece dupa fiecare operatie 
+rezultatul este pus pe stiva, la final, ultimul rezultat este tot pe stiva, asa 
+ca ii dam pop si il afisam.

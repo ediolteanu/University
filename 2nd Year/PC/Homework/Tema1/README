@@ -1,0 +1,31 @@
+Nume: Olteanu Eduard-Florin
+Grupa: 324CD
+
+In router.c am implementat parsarea, citind elementele intr-un vector si apoi
+sortandu-l cu merge sort mai intai dupa prefix si apoi dupa masca, ambele in
+ordine crescatoare.
+
+Am implementat protocolul arp astfel: cand nu gasesc match in arp_table trimit
+arp request. Daca primesc arp request pe router trimit un arp reply, iar atunci
+cand primesc un apr reply inseamna ca am primit adresa mac pe care am cerut-o la
+apr request si acum pot trimite pachetele din coada care trebuiau trimise la
+adresa mac tocmai primita. Parcurg elementele din coada si le trimit sau le
+adaug intr-o coada auxiliara pe care apoi o copiez inapoi in coada initiala.
+
+Apoi am implementat procesul de dirijare urmand instructiunile din cerinta temei.
+Am folosit cautare binara pentru gasirea longest prefix match, si am implementat
+si suport pentru protocolul ICMP.
+Pentru procesul de dirijare primesc un pachet, verific daca este arp sau ip.
+Daca este arp verific daca imi este destinat mie si daca este un pachet icmp
+echo request -> daca da trimit echo reply. De asementea ii verific ttl si
+checksum-ul. Daca checksum-ul este gresit il arunc. Daca ttl este <= 1 trimite
+un mesaj icmp ttl exceeded catre sursa. Daca nu se gaseste un prefix match,
+trimite un mesaj icmp destination unreachable.
+
+Am folosit functia checksum din laboratorul 5.
+
+Feedback la tema: mi s-a parut o tema foarte grea deoarece modul in care a fost
+prezentata a fost destul de greu de inteles pentru cineva care nu a mai luat
+contact cu protocoale pana acum, iar lipsa todo-urilor din scheletul temei a
+facut ca tema sa dureze foarte mult de implementat si sa nu imi dau seama unde
+gresesc pentru a putea corecta.

@@ -1,0 +1,10 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"../../../../project_colocviu.srcs/sources_1/new/stare1110.v" \
+"../../../../project_colocviu.srcs/sim_1/new/simulare1110.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

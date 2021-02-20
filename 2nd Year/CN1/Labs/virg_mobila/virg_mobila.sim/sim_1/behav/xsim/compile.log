@@ -1,0 +1,34 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Facultate/CN/virg_mobila/virg_mobila.srcs/sources_1/new/adjust_exp.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module adjust_exp
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Facultate/CN/virg_mobila/virg_mobila.srcs/sources_1/new/allign_mantise.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module allign_mantise
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Facultate/CN/virg_mobila/virg_mobila.srcs/sources_1/new/concat.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module concat
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Facultate/CN/virg_mobila/virg_mobila.srcs/sources_1/new/exp_compare.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module exp_compare
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Facultate/CN/virg_mobila/virg_mobila.srcs/sources_1/new/norm.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module norm
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Facultate/CN/virg_mobila/virg_mobila.srcs/sources_1/new/op_m.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module op_m
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Facultate/CN/virg_mobila/virg_mobila.srcs/sources_1/new/registru16.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module registru16
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Facultate/CN/virg_mobila/virg_mobila.srcs/sources_1/new/registru24.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module registru24
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Facultate/CN/virg_mobila/virg_mobila.srcs/sources_1/new/registru26.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module registru26
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Facultate/CN/virg_mobila/virg_mobila.srcs/sources_1/new/registru48.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module registru48
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Facultate/CN/virg_mobila/virg_mobila.srcs/sources_1/new/registru56.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module registru56
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Facultate/CN/virg_mobila/virg_mobila.srcs/sources_1/new/registru8.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module registru8
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Facultate/CN/virg_mobila/virg_mobila.srcs/sources_1/new/sum1bit.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sum1bit
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Facultate/CN/virg_mobila/virg_mobila.srcs/sources_1/new/sum24biti.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sum24biti
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Facultate/CN/virg_mobila/virg_mobila.srcs/sources_1/new/sum4biti.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sum4biti
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Facultate/CN/virg_mobila/virg_mobila.srcs/sources_1/new/tot.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module tot
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Facultate/CN/virg_mobila/virg_mobila.srcs/sim_1/new/simulation.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module simulation

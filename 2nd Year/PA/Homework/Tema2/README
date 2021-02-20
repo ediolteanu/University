@@ -1,0 +1,22 @@
+Nume: Olteanu Eduard-Florin
+Grupa: 324CD
+
+Pentru problema 1 am reprezentat graful cu o matrice de adiacenta. Initial
+setam "parintele" fiecarui nod ca fiind el insusi si actualizam acest parinte
+de fiecare data cand adaugam o noua muchie. Functia getHighestParent ne 
+returneaza cine este parintele cel mai departat al unui nod dat ca parametru.
+Apoi pentru fiecare nod verificam daca apartine unui ciclu, daca da il vizitam,
+daca nu facem DFS din el. In DFS construim recursiv o cale in care adaugam
+tot timpul nodul curent, si apoi pentru fiecare nod in care putem ajunge din 
+nodul curent verificam daca acestia au cel mai departat parinte diferit.
+Daca da verificam daca nodul copil curent a fost vizitat si daca a fost
+vizitat inseamna ca am ajuns intr-un ciclu, deci setam ciclu pe 1 pentru
+nodul parinte maxim -> astfel incheindu-se un ciclu. Daca nu a fost vizitat
+facem DFS din el. Daca parintii cei mai departati sunt diferiti sarim peste
+nod. La final cautam verificam daca fiecare nod a fost vizitat si daca nu exista
+ciclu pentru parintele cel mai indepartat al lui inseamna ca poate fi eliminata
+o muchie. Daca exista ciclu inseamna ca nu poate fi eliminata muchie. Numarul 
+minim de muchii care trebuie pastrate este diferenta dintre numarul total de 
+noduri (acesta fiind si numarul de muchii astfel incat fiecare se poate vizita
+cu fiecare din muchiile introduse) si numarul de muchii care sunt in plus.
+Complexitate: O(n(n+m))

@@ -1,0 +1,15 @@
+Nume: Olteanu Eduard-Florin
+Grupa: 324CD
+
+In server:
+Am implementat protoculul TCP cu multiplexare in care salvez asignez 
+filedescriptori pentru fiecare client. 
+Atunci cand primesc un mesaj de la un client verific ce tip de mesaj este.
+Daca este SHARE salvez numele, portul si ip-ul intr-o structura.
+Daca este UNSHARE setez isShared pe 0.
+Daca este DOWNLOAD trimit catre filedescriptorul care a trimis cererea
+un mesaj care contine port-ul si IP-ul de unde trebuie luat mesajul.
+
+In client:
+Trimit mesaje introduse de la tastatura catre server iar atunci cand 
+primesc raspuns inseamna ca trebuie sa efectuez download cu paramentrii primiti.

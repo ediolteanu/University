@@ -1,0 +1,9 @@
+0.6
+2019.2
+Dec  5 2019
+05:06:03
+E:/Facultate/CN/sumator_16/sumator_16_CLA/sumator_16_CLA.sim/sim_1/behav/xsim/glbl.v,1573089660,verilog,,,,glbl,,,,,,,,
+E:/Facultate/CN/sumator_16/sumator_16_CLA/sumator_16_CLA.srcs/sim_1/new/test_sim16.v,1586535227,verilog,,,,test_sim16,,,,,,,,
+E:/Facultate/CN/sumator_16/sumator_16_CLA/sumator_16_CLA.srcs/sources_1/new/sum16bit.v,1586533933,verilog,,E:/Facultate/CN/sumator_16/sumator_16_CLA/sumator_16_CLA.srcs/sources_1/new/sum1bit.v,,sum16bit,,,,,,,,
+E:/Facultate/CN/sumator_16/sumator_16_CLA/sumator_16_CLA.srcs/sources_1/new/sum1bit.v,1586533807,verilog,,E:/Facultate/CN/sumator_16/sumator_16_CLA/sumator_16_CLA.srcs/sources_1/new/sum4bit.v,,sum1bit,,,,,,,,
+E:/Facultate/CN/sumator_16/sumator_16_CLA/sumator_16_CLA.srcs/sources_1/new/sum4bit.v,1586533859,verilog,,E:/Facultate/CN/sumator_16/sumator_16_CLA/sumator_16_CLA.srcs/sim_1/new/test_sim16.v,,sum4bit,,,,,,,,

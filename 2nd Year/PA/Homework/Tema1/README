@@ -1,0 +1,20 @@
+Nume: Olteanu Eduard Florin
+Grupa: 324CD
+
+Problema 1:
+Am folosit programare dinamica pentru rezolvarea acestei probleme.
+Mai intai am sortat temele dupa deadline crescator.
+In matricea D am salvat pe pozitia D[i][j] maximul de la momentul respectiv,
+unde i este numarul temelor si j este numarul de saptamani. In final pe
+pozitia D[i][j] se afla maximul total de puncte. Apoi am incercat sa
+refac drumul pentru a descoperi temele dar nu am reusit sa termin si imi 
+adauga cateva teme in plus, nu am descoperit motivul.
+Complexitatea algoritmului este: O(n*m) unde n este numarul de teme si m este
+numarul de saptamani.
+
+Problema 2:
+Am folosit divide et impera. Astfel impart problema in bucati pana cand o 
+bucata este destul de mica(am considerat valoarea 15) pentru a gasi numarul
+magic minim din ea. Apoi compar numerele magice minime dintre bucatile gasite
+pentru a stabili numarul magic cel mai mic, functia apelandu-se recursiv.
+Complexitatea algorimtului este O(n*log(n)) unde n este numarul de bilete.

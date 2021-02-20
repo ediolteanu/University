@@ -1,0 +1,84 @@
+Nume: Olteanu Eduard-Florin
+Grupa: 324CD
+
+Tema 3 Protocoale de Comunicatii
+
+Pentru implementarea temei am folosit scheletul laboratorului 10.
+Tot program-ul functioneaza intr-un while infinit care este intrerup doar
+atunci cand este introdusa comanda exit. In slide exista cate un if pentru
+fiecare comanda posibila, daca nu este introdusa o comanda valida este afisat
+un mesaj corespunzator.
+Pentru fiecare comanda in parte am ales sa deschid conexiunea la inceputul
+comenzii si sa o inchid la finalul acesteia.
+
+Pentru comanda register se citesc username-ul si parola de la tastatura si se 
+creeaza payload-ul corespunzator obiectului JSON asteptat de server.
+Apoi se face o cerere de tip post cu parametrii indicati in enunt. Mesajul
+creat este trimis la server. Apoi este primit raspunsul de la server, de unde
+este extras codul. Daca acesta este 201 inseamna ca a fost creat contul, altfel
+inseamna ca username-ul deja exista.
+
+Pentru comanda login se citesc username-ul si parola de la tastatura si se 
+creeaza payload-ul corespunzator obiectului JSON asteptat de server. Apoi se 
+face o cerere de tip pos cu paramentrii indicati in enunt, mesaj ce apoi este
+trimis la server. Din raspunsul primit de la server se extrage codul. Daca 
+acesta este 200 inseamna ca cererea a fost buna si se extrage si cookie-ul 
+returnat de server, cookie ce este salvat pentru urmatoarele comenzi din 
+aceeasi sesiune de logare. Daca este alt cod inseamna ca username-ul si parola
+introduse nu formeaza o pereche existenta. Daca se incearca o comanda login
+in timp ce este deja o sesiune de logare activa se afiseaza un mesaj de eroare.
+
+Pentru comanda enter_library este creata o cerere de tip get cu parametrii din
+enunt si cu cookie-ul primit de la login. Se trimite mesajul si se primeste
+raspunsul de la server din care este extras codul. Daca acesta este 200 
+inseamna ca cererea a fost valida si ca a fost returnat un token jwt care este
+salvat pentru a demonstra accesul la biblioteca in comenzile urmatoare. Daca
+este alt cod inseamna ca cookie-ul nu exista sau nu este valid, adica nu este
+autentificat.
+
+Pentru comanda get_books este creata o cerere de tip get cu parametrii din
+enunt si cu token-ul jwt primit de la enter_library si cookie-ul primit de la
+login. Se trimite mesajul si se primeste raspunsul de la server din care este
+luat codul. Daca acesta este 200 inseamna ca token-ul si cookie-ul au fost bune
+si s-au returnat cartile, care se afiseaza. Daca este alt cod inseamna ca
+nu s-a demonstrat accesul la biblioteca.
+
+Pentru urmatoarele functii, atunci cand trebuie cititi paramentrii id sau
+page_count este verificat ca acestia sa fie numere. Daca este introdus altceva
+in afara de un numar este afisata eroarea si se cere din nou un numar.
+
+Pentru comanda get_book este creata o cerere de tip get cu paramentrii din 
+enunt si cu token-ul jwt si cu cookie. Pentru aceasta comanda am modificat
+antetul functiei schelet din lab - compute_get_messsage - adaugand campul extra.
+Daca acest camp nu este NULL se adauga la ruta de acces id-ul dat ca parametru
+in linia de comanda. Dupa se trimite mesajul si se primeste raspunsul de la
+server. Daca codul este 200 inseamna ca cererea a fost valida si se afiseaza
+cartea cu id-ul respectiv. Daca este codul 404 inseamna ca o carte cu id-ul
+dat nu exista. Pentru alt cod inseamna ca nu a fost demonstrat accesul la
+biblioteca.
+
+Pentru comanda add_book este creata o cerere de tip get cu parametrii din
+enunt, cu token-ul jwt si cu cookie-ul curent. De asemenea se asteapta de la
+tastatura detaliile pentru cartea ce urmeaza a fi adaugata si se creeaza 
+payload-ul corespunzator obiectului JSON asteptat de server. Mesajul este trimis
+si se primeste raspunsul de la server. Codul 200 reprezinta o operatie care a
+avut succes, cartea fiind adaugata. Altfel inseamna ca nu a fost demonstrat
+accesul la biblioteca.
+
+Pentru comanda delete_book am scris functia compute_delete_request care
+creeaza un mesaj de tip delete cu parametrii din enunt. Aceasta functioneaza
+precum functia compute_get_request, parametrul extra fiind utilizat in acelasi
+mod ca la comanda get_book. Mesajul este trimis si raspunsul este primit. 
+Daca codul este 200 inseamna ca cererea a fost valida si a fost stearsa
+cartea cu id-ul respectiv. Daca este codul 404 inseamna ca o carte cu id-ul
+dat nu exista. Pentru alt cod inseamna ca nu a fost demonstrat accesul la
+biblioteca.
+
+Pentru comanda logout este verificat mai intai daca exista in cont logat, in caz
+contrar este afisat un mesat de eroare. Daca exista un cont logat este creata o 
+cerere de tip get cu paramentrii din enunt si cu cookie-ul primit la login. 
+Mesajul este trimis si este asteptat raspunsul. Codul 200 reprezinta delogarea 
+cu succes, iar alt cod inseamna ca nu a fost demonstrata autentificarea.
+
+
+
