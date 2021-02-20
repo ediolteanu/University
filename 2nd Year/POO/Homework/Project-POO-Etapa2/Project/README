@@ -1,0 +1,133 @@
+Nume: Olteanu Eduard-Florin
+Grupa 324CD
+
+League-of-POO - etapa 1
+
+De-a lungul rezolvarii aceste teme am folosit git, in arhiva fiind folderul
+.git.
+
+In clasa Constants am definit toate valorile legate de campioni.
+In clasa GameInput am creat functia readFromFile care face citirea din fisiere
+utilizand API-ul pus la dispozitie.
+
+TerrainType este o enumerare a celor 4 tipuri de teren.
+Clasa Map are rol transpunerea din matrice de char-uri in tipurile de teren,
+metoda getTerrainType returnand un element de tip TerrainType in functie de
+valoarea de char-ul respectiv.
+
+Clasele Map si Game sunt Singleton.
+
+In clasa Game sunt implementate metodele care ajuta efectiv la rularea jocului.
+In metoda playGame este un for pentru runde. La inceputul fiecarei runde, se
+verifica abilitatile overtime ramase. Apoi cu ajutorul celor doua for-uri se
+cauta doi jucatori care se afla pe aceeasi pozitie, sunt vii si nu s-au luptat
+deja. Daca se gasesc, acestia se lupta - fight1v1() -  si in metoda 
+fightAftermath() se verifica daca cineva a castigat lupta si se adauga xp; de 
+asemenea daca face lvl-up se reinitializaeza hp-ul.
+In metoda fight1v1 se calculeaza mai intai dmg1 si dmg2 care reprezinta
+damage-urile pe care cei doi eroi le dau inainte de race modifiers, pentru a se
+da ca paramentru la metodele accept, in eventualitatea in care unul dintre ei 
+este wizard sa aiba damage la care sa dea deflect. Apoi se seteaza faptul ca
+cei doi eroi s-au batut pentru a nu fi luati in considerare in continuare la
+parcurgere
+In metoda endGame se face scrierea in fisier.
+
+Clasa Hero este o clasa abstracta care defineste parametrii si metodele de baza
+ale fiecarui tip de caracter.
+Metode comune tuturor sunt implementate aici, updateLevel, resetDebuffs, 
+updatePosition. De asemenea sunt declarate si metodele abstracte updateTotalHP(),
+calculateDamageBeforeModifiers(), accept() si cele 4 fight() care trebuie 
+implementate de fiecare clasa mostenitoare.
+Metoda updateTotalHP() seteaza HP-ul total al unui erou in functie de nivel si de
+paramentrii specifici si updateaza si HP-ul curent la HP-ul total actualizat,
+deoarece aceasta metoda este apelata doar atunci cand un erou face level-up.
+Metodele accept() si 4xfight() reprezinta mecanismul de double dispatch.
+Fiecare clasa are o metoda accept(hero..) in care apeleaza hero.fight(this..).
+In functie de tipul hero si this se va apela metoda fight din clasa
+corespunzatoare asupra eroului corespunzator, creaindu-se astfel mecanismul de
+double-dispatch.
+
+Apoi in fiecare clasa mostenitor avem implementarile celor 4 metode fight pentru
+fiecare tip de erou. In fiecare metoda fight se da damage-ul corespunzator
+abilitatilor si se seteaza erou mort daca are HP <= 0. De asemenea se
+implementeaza si metoda calculateDamageBeforeModifiers. Cu precizarea ca in clasa
+Wizard, aceasta ultima metoda returneaza 0 deoarece ea este folosita doar cand se
+lupta un wizard pentru abilitatea deflect, in cazul in care se lupta 2 wizard,
+abilitatea deflect nu se aplica. De asemenea acest lucru este observat in metoda
+fight(wizard...) unde nu este apelata deflect().
+
+Fiecare abilitate a fost implementata conform cerintei, in afara de calcularea
+damage-ului basic, in functie de paramterii abilitatii si de race si land 
+modifiers, pentru abilitatile care aplica efecte overtime se apeleaza si
+resetDebuffs care reseteaza toti parametrii overtime ai unui erou si se seteaza
+noii parametrii in functie de abilitate. De ex: ignite(hero..) aplica damage
+in runda curenta si apoi seteaza remainingIgniteRounds = 2 si igniteDamage in 
+functie de valoarea calculata.
+
+De asemenea, pentru fiecare clasa de erou este suprascrisa si metoda toString,
+pentru a afisa rezultatul conform cerintei.
+
+In clasa Main, in main este facuta mai intai citirea si apoi sunt instantiate
+un obiect de tip Map si unul de tip Game. Apoi sunt apelate game.playGame pentru
+a rula jocul si game.endGame(args[1]) pentru a face scrierea in fisierul output
+dat ca parametru la args[1].
+
+~~~~ Etapa 2 ~~~~
+
+La aceasta etapa am creat cate un factory pentru ingeri si unul pentru eroi. De
+asemenea aceste doua clase sunt si de tip Singleton. Aceste clase creeaza toate
+toate instantele necesare, datele fiind primite de la input.
+
+Am adaugat pachetul angels care contine clasa abstracta Angel si toate tipurile
+de ingeri fiind extensii ale clasei angel. De asemenea clasa Angel
+implementeaza interfata Visitor - fiecare clasa de inger implementand astfel
+interfata Visitor. Corespondentul lui Visitor - Visitable - este implementat de
+clasa abstracta Hero, identificandu-se astfel corespondentii visitor-visitable.
+
+Fiecare clasa de tip angel implementeaza cele 4 metode din interfata, cate una
+pentru fiecare clasa de tip erou - astfel creandu-se un polimorfism - si 
+aplica modificarile in functie de tipul de inger si tipul de erou. Aceste
+metode reprezinta partea de visit din concept. Partea de accept este 
+implementata de fiecare clasa de tip erou.
+
+Pentru strategii am creat interfata HealthStrategy pe care o implementeaza 
+cele doua strategii existente, LowHealthStrategy, in care eroul are viata mai
+mica decat un anumit procent, si EnoughHealthStrategy, in care eroul are viata
+intr-un anumit interval. Aceasta interfata foloseste si ea conceptul de 
+polimorfism, avand cate o metoda pentru fiecare tip de erou. In cadrul celor
+doua strategii implementate se regasesc modificarile aduse pentru fiecare erou
+in functie de procentul sau de viata, procent calculat inainte de aplicarea 
+strategiei, fiind cel care decide ce strategie se apeleaza si respectiv aplica.
+
+De asemenea am implementat si conceptul de Observer-Observable. Desi clasele
+Observer si Observable sunt deprecated, am ales sa le folosesc deoarece erau
+suficiente pentru ce aveam nevoie. Observer-ul este clasa GreatMagician, iar
+obiectele Observable sunt clasele de tip Angel si Hero.
+
+In clasele Angel si Hero se afla listele de observeri, respectiv metodele
+addObserver.
+
+Clasa GreatMagician este Singleton. In aceasta se regaseste doar metoda update
+care scrie in fisier informatiile primite din metodele notifyObservers din 
+clasele Hero si Angel. Cele 2 metode notifyObservers primesc un string care
+decide in cadrul switch-ului ce fel de actiune a efectuat ingerul sau eroul,
+iar in functie de aceasta creeaza propozitia transmisa mai departe,
+utilizandu-se de celalalt parametru primit pentru a oferi datele necesare.
+
+In cadrul clasei Game am adaugat metodele spawnAngels si applyStrategies care
+fac ce reiese din numele lor, in functiile de conditiile din enunt.
+De asemenea, in cadrul metodelor din aceasta clasa am apelat notifyObservers
+de fiecare daca cand era o actiune ceruta in enunt de Observator.
+
+De asemenea, in clasa Hero am adaugat listele angelModifiers si
+strategyModifiers care retin modificarile aduse de catre ingeri si strategii
+asupra bonusurilor abilitatilor eroilor.
+
+Din cauza aproximarilor abundente de-a lungul temei, nereusind sa rezolv
+problema aparuta in cadrul aproximarilor repetate am fost nevoit sa ajustez
+modificatorii din paralysis, scazand -0.001f. Precizez ca am incercat orice
+metoda mi-a trecut prin cap sau am vazut pe forum, inclusiv cea cu listele,
+care este si cea finala, si tot aparea o diferenta de 1dmg la 2 teste de la
+Rogue.
+
+
