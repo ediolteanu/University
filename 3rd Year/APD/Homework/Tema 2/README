@@ -1,0 +1,133 @@
+Nume: Olteanu Eduard-Florin
+Grupa: 336CAb
+
+Tema 2 APD
+
+Pentru implementarea temei am creat 10 clase, cate una pentru fiecare task,
+fiecare clasa implementand interfata Intersection. Initial adaugasem si metoda
+resolve in interfata dar am ajuns sa am niste probleme cu clasele anonime si
+am scos-o. Astfel, fiecare clasa are metoda statica resolve unde este rezolvat
+task-ul propriu-zis. De asemenea in fiecare clasa se regasesc definitiile
+variabilelor necesare task-urilor.
+
+In ReaderHandleFactory se face o parsare diferita a ultimei linii din fisier in
+functie de fiecare task. De asemenea aici am decis si sa initializez elementele
+de sicronizare precum barierele, semafoarele, listele de semafoare si
+AtomicIntegers.
+
+In IntersectionFactory am adaugat in HashMap perechile de string-uri si obiecte
+de tipul Intersection.
+
+In IntersectionHandlerFactory se afla apelurile functiilor statice resolve()
+corespunzatoare fiecarui task.
+
+
+Task1 - simple_semaphore - class SimpleIntersection
+
+Pentru acest task este necesara o singura bariera pentru ca toate masinile sa
+ajunga in intersectie si sa se opreasca inainte de a incepe sa astepte.
+Dupa ce ajung toate thread-urile la bariera fiecare asteapta (sleep) numarul
+de milisecunde corespunzator iar apoi pleaca.
+
+
+Task2 - simple_n_roundabout - class SimpleRoundabout
+
+Am folosit un semafor si o bariera. Semaforul este initializat cu n permits ca
+sa intre in intersectie doar maxim n masini. In resolve, mai intai bariera se 
+asigura ca toate masinile - thread-urile - au ajuns la rond. Apoi se da acquire
+pentru a intra primele n masini in rond. Daca se trece de functia blocanta
+acquire inseamna ca sunt locuri disponibile in rond. Masinile care intra
+asteapta numarul de milisecunde indicat la input si apoi ies. Atunci cand ies
+dau release la semafor pentru ca masinile care inca asteapta sa poate intra si
+ele.
+
+
+Task3 - simple_strict_1_car_roundabout - class SimpleStrict1Roundabout
+
+Am folosit o lista de semafoare cu cate un semafor pentru fiecare sens de mers
+si o bariera. Fiecare semafor este initializat cu 1 permit, pentru ca in sens
+sa intre o singura masina la un moment de timp de pe un lane, iar bariera este
+initializata cu numarul de sensuri ca sa fie astepta la intrarea in sens un 
+numar de masini egal cu numarul de sens-uri. Combinat cu faptul ca semafoarele
+au un singur permit rezulta ca vor intra exact cate o masina de pe fiecare sens.
+Dupa ce au iesit din sens se da release la fiecare semafor de pe fiecare sens.
+
+
+Task4 - simple_strict_X_car_roundabout - class SimpleStrictXRoundabout
+
+Cam aceeasi idee ca la task-ul anterior doar ca mai este nevoie de inca o 
+bariera care asteapta toate masinile la inceput pentru a ajunge la rond.
+Iar cea de-a doua bariera are rolul de a sincroniza cele x * nr_lanes masini
+care se afla in sens, astfel ele asteapta sa fie alese, sa intre si sa iasa in
+acelasi timp. Semafoarele de pe fiecare sens sunt initializate cu x permits
+pentru a permite accesul in sens giratoriu a exact x masini de pe un sens.
+
+
+Task5 - simple_max_x_car_roundabout - class SimpleStrictMaxXRoundabout
+
+Nemaiavand restrictia de un numar exact de masini care intra in sens, 
+barierele nu mai sunt necesare ca la celelalte 2 task-uri trecute. 
+Semafoarelr initializate cu x permits garanteaza ca in intersectie pot patrunde
+maxim x masini in acelasi timp in sensul giratoriu din aceeasi directie.
+
+
+Task6 - priority_intersection - class PriorityIntersection
+
+Pentru acest task am folosit un semafor pe care il initializez cu numarul de
+masini cu high priority. Astfel daca este intalnit cazul in care trebuie sa
+intre toate masinile cu high priority inainte sa iasa una dintre ele acest
+lucru este posibil. Masinile cu low priority dau acquire cu numarul maxim 
+de permits, astfel ele pot intra in intersectie doar daca in aceasta nu se
+afla o alta masina cu low priority sau oricate masini cu high priority.
+
+
+Task7 - crosswalk - class Crosswalk
+
+Pentru acest task am pornit de la o functie de afisare basic care afiseaza
+daca masina curenta are verde sau rosu in functie de ce returneaza 
+pedestrians.isPass() si de mesajul afisat in trecut. Astfel daca variabila
+lastMessage este false inseamna ca acesta este ori mesajul initial ori ultimul
+mesaj a fost verde, iar daca este true inseamna ca ultimul mesaj a fost rosu.
+Atunci cand nu trec pietoni se incearca afisarea de verde, iar cand trec de
+rosu. Problema opririi acestui while este data de ce returneaza
+pedestrians.isFinished(). Desi aceasta functie se opreste in mod normal din
+cauza lucrului cu thread-uri variabila finished care este modificata avea parte
+de conflicte, lucru pe care l-am rezolvat facand-o pe aceasta volatile si 
+citind astfel cea mai recenta valoare a variabilei, deoarece aceasta este
+transmisa catre toate thread-urile.
+
+
+Task8 - simple_maintenance - class SimpleMaintenance
+
+Am folosit 2 semafoare, unul pentru fiecare sens si o bariera. Semafoarele sunt
+initializate initial - cel pentru lane-ul 0 cu numarul x de masini care pot 
+trece iar celalalt cu 0. Astfel la inceput cand o masina va da acquire ea va 
+putea trece doar daca se afla pe lane-ul 0. Pentru a ne asigura ca au trecut
+toate masinile de bottleneck am folosit o bariera care asteapta x thread-uri.
+La final masinile care au trecut dand acquire la un semafor dau release acum 
+pe celalalt semafor, pentru a schimba sensul pe care trec masini.
+
+
+Task9 - complex_maintenance - class ComplexMaintenance
+
+To be Implemented
+
+
+Task10 - railroad - class Railroad
+
+Pentru acest task am folosit o lista de semafoare si un AtomicInteger pentru a
+salva ordinea in care ajung masinile la bariera. De asemenea am aduagat o 
+variabila pentru ordine si in clasa Car. AtomicInteger-ul este initializat cu
+0 si incrementat de fiecare data cand o sa fie asignat, astfel fiecare masina
+care ajunge la bariera isi ia un numar de ordine diferit si consecutiv.
+Dupa ce au ajuns toate masinile si au asteptat se ridica bariera.
+Lista de semafoare reprezinta momentul din ordine la care suntem de afisat.
+Astfel aceasta este initializata cu 0 permits mai putin primul semafor care
+reprezinta masina care a ajuns prima. Astfel masina care a ajuns prima trece
+de semafor atunci cand da acquire deoarece initial permits pentru acest semafor
+este 1. Iar dupa ce trece da release pentru urmatorul semafor ca indice care
+este asignat urmatoarei masini care a ajuns la bariera in functie de numarul de
+ordine stabilit la inceput. Astfel prima masina care trece de acquire este
+prima masina care a ajuns la bariera si aceasta da release la semaforul asignat
+urmatoarei masini care a ajuns la bariera si tot asa pana au trecut toate
+masinile.

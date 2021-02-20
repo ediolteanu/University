@@ -1,0 +1,30 @@
+Nume: Olteanu Eduard-Florin
+Grupa: 336CA
+
+Tema 1 - Algoritmi Paraleli si Distribuiti
+
+Pentru paralelizarea algoritmului secvential pe care l-am primit in schelet am
+inceput mai intai prin a decide ce functii pot ramane in main si ce functii 
+trebuie paralelizate. Astfel am declarat ca variabile globale toate variabilele
+de care aveam nevoie in functiile pe care le-am paralelizat. In main am lasat 
+citirile alocarile si scrierile, iar in functia apelata de catre thread_create
+- thread_function - am apelat functiile ce aplicau algoritmii. Am modificat
+antetul acestora, adaugand ca parametru id-ul thread-ului curent pentru a putea
+face paralelizarea. De asemenea in functia de citire a parametrilor am adaugat
+P - numarul de thread-uri.
+
+Paralelizarea celor doi algoritmi am facut-o identic deoarece conceptual cei
+doi algoritmi functioneaza la fel. Am decis sa fac paralelizarea pe linii,
+impartind astfel inaltimea la P thread-uri si creand H / P secvente pe care
+lucreaza thread-urile. In acest context este nevoie de bariera intre aplicarea
+algoritmului si transformarea matricii din coordonate matematice in coordonate
+ecran pentru a ne asigura ca algoritmul a terminat de modificat matricea result
+inainte sa incepem sa modificam din nou in ea. Intre cei doi algoritmi nu este 
+nevoie de o bariera deoarece am folosit 2 matrice result si exista bariera 
+inaintea transformarii de coordonate matematice in coordonate ecran din 
+algoritmul julia, thread-urile pot termina operatiile pe result1 si apoi sa 
+treaca la algoritmul mandelbrot care se foloseste de result2 fara sa existe 
+conflict.
+
+La final in main se opresc thread-urile si se distruge bariera, iar apoi se fac
+scrierile in fisiere si dezalocarile de memorie.

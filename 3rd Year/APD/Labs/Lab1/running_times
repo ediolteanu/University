@@ -1,0 +1,15 @@
+nr threads: 1
+real	0m18.456s
+user	0m18.421s
+sys	0m0.020s
+
+nr threads: 2
+real	0m9.419s
+user	0m18.604s
+sys	0m0.024s
+
+nr threads: 4
+real	0m5.004s
+user	0m18.846s
+sys	0m0.328s
+

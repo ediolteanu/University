@@ -1,0 +1,49 @@
+ex2 
+N = 100 000, P = 1
+real	1m1.578s
+user	1m1.067s
+sys		0m0.380s
+
+N = 100 000, P = 2
+real	0m35.066s
+user	0m55.007s
+sys		0m2.985s
+
+N = 100 000, P = 4
+real	0m26.613s
+user	0m52.215s
+sys		0m7.585s
+
+
+ex4 
+L = 2500, P = 1
+real	0m24.037s
+user	0m23.903s
+sys		0m0.064s
+
+L = 2500, P = 2
+real	0m10.400s
+user	0m20.463s
+sys		0m0.064s
+
+L = 2500, P = 4
+real	0m5.408s
+user	0m19.388s
+sys		0m0.589s
+
+
+ex5
+N = 2^27, P = 1
+real	0m30.233s
+user	0m29.569s
+sys		0m0.619s
+
+N = 2^27, P = 2
+real	0m17.423s
+user	0m29.870s
+sys		0m0.444s
+
+N = 2^27, P = 4
+real	0m11.318s
+user	0m29.584s
+sys		0m0.817s

@@ -1,0 +1,119 @@
+Nume: Olteanu Eduard-Florin
+Grupa: 336CAb
+
+Tema 3 APD - MPI si Pthreads
+
+In main pornim 5 noduri MPI, pe cel cu rank-ul 0 il consideram master si pe
+celelalte 4 le consideram workeri.
+
+Nodul master porneste 4 thread-uri pentru citirea in paralel. In functia de
+citire se citeste linie cu linie. Se verifica daca linia curenta este un
+gen de paragraf si daca da acesta se pune in order de catre thread-ul cu
+id-ul 0. Daca nu este titlu se citeste paragraful si se concateneaza intr-un
+singur string care contine si '\n'. Atunci cand intalneste o linie goala
+inseamna ca s-a terminat paragraful si acesta trebuie trimis. Deoarece sunt
+4 thread-uri si 4 workeri fiecare thread corespunde unui worker caruia ii
+trimite. Mai intai trimite dimensiunea paragrafului si astfel worker-ul stie
+ce dimensiune trebuie sa aiba urmatorul mesaj pe care il primeste. De asemenea
+pentru a primi corect paragrafele de catre workeri si a nu se intercala mesajele
+am trimis ca tag un counter care se incrementeaza la fiecare paragraf, astfel
+doar un set de 2 mesaje din acelasi gen au acelasi tag - size si string.
+Atunci cand se termina de citit fisierul se trimite un size = -1 si workerii
+stiu ca nu mai trebuie sa primeasca alte mesaje.
+Pentru a nu avea probleme cu memoria de fiecare data cand nu mai folosim un
+paragram il stergem din vector cu clear().
+
+In fiecare worker se porneste un thread pentru primirea paragrafelor de la
+thread-ul asignat lui din master. Acesta primeste paragrafe cat timp size-ul
+nu este -1. Fiecare paragraf este apoi impartit in linii, acestea fiind
+adaugate intr-un vector global lines. Apoi in functie de numarul de linii se
+pornesc minimul dintre linii / 20 rotunjit prin adaugare si numarul de 
+thread-uri -1 disponibile.
+
+Apoi fiecare thread isi calculeaza liniile care ii sunt repartizate folosind
+un contor global care este actualizat cu ajutorul unui mutex pentru a ne
+asigura ca thread-urile nu lucreaza unele peste celelalte. Numarul de linii
+maxim pe care il poate avea un thread este 20. Fiecare thread
+ruleaza intr-un while pana cand se termina toate liniile. Apoi fiecare
+thread isi ruleaza operatia specifica worker-ului din care a fost creat.
+
+horror - Cream un nou element char * si adaugam in acesta toate caracterele,
+iar atunci cand un caracter este litera si nu este vocala il adaugam inca o
+data. Am folosit tolower pentru a ma asigura ca daca prima litera din cuvant
+este capital si consoana ea sa fie adaugata ca litera mica. Apoi inlocuim
+linie normala cu cea modificata.
+
+comedy - Modifica cuvintele din liniile asignate astfel incat literele de pe
+pozitiile pare din cuvant sa fie litere mari. Deoarece nu marim dimensiunea
+sirului nu este nevoie sa realocam memoria.
+
+fantasy - Modifica cuvintele din liniile asignate astfel incat toate sa inceapa
+cu litera mare. Deoarece nu marim dimensiunea sirului nu este nevoie sa 
+realocam memoria.
+
+science-fiction - Atunci cand intalneste un separator de cuvinte ( \t\n\r\0)
+salveaza ultimii 2 indici pentru a incadra un cuvant - spatiul de dinaintea
+cuvantului si spatiul de dupa cuvant. Apoi fiecare cuvant multiplu de 7
+(0 nu se pune deoarece se numara de la 1) este inversat litera cu litera. 
+Deoarece nu marim dimensiunea sirului nu este nevoie sa realocam memoria.
+
+Dupa ce au terminat de prelucrat un paragraf thread-urile create de thread-ul
+din worker se intorc inapoi in functia worker si dau join. Apoi se recreaza
+un singur string din linii si se adauga in vectorul paragraphs pentru a fi
+trimise dupa ce sunt prelucrate toate. 
+
+Dupa ce au fost prelucrate toate paragrafele din fisier acestea sunt trimise
+pe rand inapoi in master utilizant aceeasi logica ca si la trimiterea din
+master. Se trimite mai intai size-ul si apoi un paragraph care este de fapt
+o linie care contine '\n', un astfel de pachet avand un tag unic pentru worker.
+
+Inapoi in master acestea sunt asteptate si primitea in functie de ordinea in 
+care au fost adaugate in order la citire. Este alocata memorie pentru un
+paragraf si adaugat in vectorul care contine toate paragrafele modificate de
+toti workerii pentru ca mai apoi sa fie afisate.
+
+
+Scalabilitate - am rulat programul manual pe testele 4 si 5 cu numar diferit de
+thread-uri pentru prelucrare.
+
+input4.txt
+1 thread
+real    0m1.736s
+user    0m6.078s
+sys     0m1.688s
+
+2 thread-uri
+real    0m1.474s
+user    0m6.063s
+sys     0m1.656s
+
+4 thread-uri
+real    0m1.474s
+user    0m6.063s
+sys     0m1.656s
+
+input5.txt
+1 thread-uri
+real    0m2.448s
+user    0m9.672s
+sys     0m1.984s
+
+2 thread-uri
+real    0m2.073s
+user    0m9.250s
+sys     0m2.484s
+
+4 thread-uri
+real    0m2.065s
+user    0m9.125s
+sys     0m2.469s
+
+Dupa cate putem vedea exista o mica imbunatatire de la 1 thread la 2 thread-uri 
+dar atat. Putem zice ca acest lucru se intampla deoarece prelucrarea pe care
+o facem in paralel dureaza mult mai putin comparativ cu trimiterea mesajelor
+MPI, si in acelasi timp aceasta tine cont mult si de dimensiunea fisierelor de
+intrare si de numarul de core-uri ale sistemului pe care rulam, iar pentru o
+astfel de alaturare de MPI si Pthreads consider ca nu am resursele necesare
+pentru a demonstra scalabilitatea. Conform checker-ului ea exista si se observa
+diferenta la prelucrarea testului 5 cel mai bine - de la 8-9 secunde secvential
+la 2-2.5 sec in paralel. Este un printrscreen atasat.

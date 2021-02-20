@@ -1,0 +1,67 @@
+N = 1000;
+ex3
+1 thread
+real	0m7.381s
+user	0m7.355s
+sys		0m0.012s
+
+2 thread-uri
+real	0m3.616s
+user	0m7.161s
+sys		0m0.012s
+
+4 thread-uri
+real	0m2.032s
+user	0m7.271s
+sys		0m0.155s
+
+
+ex4
+1 thread
+real	0m7.126s
+user	0m7.088s
+sys		0m0.020s
+
+2 thread-uri
+real	0m3.517s
+user	0m6.953s
+sys		0m0.013s
+
+4 thread-uri
+real	0m1.978s
+user	0m6.371s
+sys		0m0.750s
+
+
+ex5 
+1 thread
+real	0m4.835s
+user	0m4.816s
+sys		0m0.004s
+
+2 thread-uri
+real	0m2.128s
+user	0m4.156s
+sys	0m0.033s
+
+4 thread-uri
+real	0m1.338s
+user	0m4.942s
+sys	0m0.177s
+
+N = 2000;
+ex5
+1 thread
+real	1m31.102s
+user	1m31.006s
+sys		0m0.064s
+
+2 thread-uri
+real	0m24.431s
+user	0m48.231s
+sys		0m0.088s
+
+4 thread-uri
+real	0m13.300s
+user	0m47.351s
+sys		0m1.230s
